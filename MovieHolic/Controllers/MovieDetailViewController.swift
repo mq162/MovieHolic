@@ -24,6 +24,7 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var revenueLabel: UILabel!
     @IBOutlet weak var languageLabel: UILabel!
     @IBOutlet weak var videosCollectionView: UICollectionView!
+    @IBOutlet weak var castCollectionView: UICollectionView!
     
     var progressRing: UICircularProgressRing!
     var movieId: Int?
@@ -31,6 +32,7 @@ class MovieDetailViewController: UIViewController {
     var detailedMovie: DetailedMovie?
     var extractor = LinkExtractor()
     private var videos: [Video] = []
+    private var cast: [CastEntry] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +56,7 @@ class MovieDetailViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        progressRing.startProgress(to: CGFloat((detailedMovie?.voteAverage ?? 0.0) * 10.0), duration: 1.5)
+        progressRing.startProgress(to: CGFloat((detailedMovie?.voteAverage ?? 0.0) * 10.0), duration: 1)
     }
     
     private func loadDetails() {
@@ -78,15 +80,31 @@ class MovieDetailViewController: UIViewController {
             self.videosCollectionView.reloadData()
         }
         
+        networking.loadCast(movieId: movieId) { [weak self] (resultCast) in
+            guard
+                let self = self, let resultCast = resultCast
+            else {
+                return
+            }
+            self.cast = resultCast
+            self.cast = Array(self.cast.prefix(20))
+            self.castCollectionView.reloadData()
+        }
+        
     }
     
     private func configureView() {
         contentView.applyShadow(radius: 20, opacity: 0.1, offsetW: 4, offsetH: 4)
-        //contentView.layer.cornerRadius = 20
-        
+        contentView.layer.cornerRadius = 10
+        contentView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         videosCollectionView.register(UINib(nibName: VideoCollectionViewCell.identifier, bundle: nil),forCellWithReuseIdentifier: VideoCollectionViewCell.identifier)
         videosCollectionView.delegate = self
         videosCollectionView.dataSource = self
+        
+        castCollectionView.register(UINib(nibName: CastCollectionViewCell.identifier, bundle: nil),forCellWithReuseIdentifier: CastCollectionViewCell.identifier)
+        castCollectionView.dataSource = self
+        
+        
     }
     
     private func updateView() {
@@ -141,7 +159,13 @@ class MovieDetailViewController: UIViewController {
 
 extension MovieDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return videos.count
+        if collectionView == castCollectionView {
+            return cast.count
+        } else if collectionView == videosCollectionView {
+            return videos.count
+        } else {
+            return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -150,7 +174,12 @@ extension MovieDetailViewController: UICollectionViewDataSource {
                                                           for: indexPath) as? VideoCollectionViewCell
             cell?.configure(video: videos[indexPath.row])
             return cell ?? UICollectionViewCell()
-        } else {
+        } else if collectionView == castCollectionView {
+              let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CastCollectionViewCell.identifier,
+                                                          for: indexPath) as? CastCollectionViewCell
+              cell?.configureCast(castEntry: cast[indexPath.row])
+              return cell ?? UICollectionViewCell()
+        }else {
             return UICollectionViewCell()
         }
     }
@@ -178,4 +207,18 @@ extension MovieDetailViewController: UICollectionViewDelegate {
                 }
             }
         }
-} 
+}
+
+//MARK: - CollectionView Flow Layout
+extension MovieDetailViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if collectionView == castCollectionView {
+            return CastCollectionViewCell.size
+        } else if collectionView == videosCollectionView {
+            return VideoCollectionViewCell.size
+        } else {
+            return CGSize(width: 0, height: 0)
+        }
+    }
+}

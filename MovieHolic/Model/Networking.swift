@@ -124,6 +124,30 @@ class Networking {
         }.resume()
     }
     
+    func loadCast(movieId: Int, completion: @escaping ([CastEntry]?) -> Void) {
+        guard
+            let url = URL(string: UrlParts.baseUrl + "movie/\(movieId)/credits")?
+                .appending("api_key", value: UrlParts.apiKey)
+        else {
+            return
+        }
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            guard let data = data else {
+                return
+            }
+            do {
+                let result = try decoder.decode(CreditsResponse.self, from: data)
+                DispatchQueue.main.async {
+                    completion(result.cast)
+                }
+            } catch {
+                completion(nil)
+            }
+        }.resume()
+    }
+    
 }
 
 

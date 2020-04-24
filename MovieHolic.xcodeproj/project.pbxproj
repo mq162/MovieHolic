@@ -142,6 +142,7 @@
 			children = (
 				18262D492432E68E0027C31D /* Main.storyboard */,
 				18262D582432EE9C0027C31D /* BannerCell.xib */,
+				18EDFEE52452D3C4000683C7 /* CastCollectionViewCell.xib */,
 				18A078232438CCB9007A107F /* SearchTableViewCell.xib */,
 				18100B1C2451D3E800776781 /* VideoCollectionViewCell.xib */,
 				18262D5C2432EEB30027C31D /* MovieCell.xib */,
@@ -161,12 +162,11 @@
 		18EE08532434C3FA008007AA /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				18100B1B2451D3E800776781 /* VideoCollectionViewCell.swift */,
-				18EDFEE42452D3C4000683C7 /* CastCollectionViewCell.swift */,
-				18EDFEE52452D3C4000683C7 /* CastCollectionViewCell.xib */,
 				18262D572432EE9C0027C31D /* BannerCell.swift */,
 				18262D5B2432EEB30027C31D /* MovieCell.swift */,
 				18A078222438CCB9007A107F /* SearchTableViewCell.swift */,
+				18100B1B2451D3E800776781 /* VideoCollectionViewCell.swift */,
+				18EDFEE42452D3C4000683C7 /* CastCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";

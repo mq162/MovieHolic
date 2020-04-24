@@ -88,6 +88,13 @@ extension UIView {
         self.layer.shadowOffset = CGSize(width: offsetW, height: offsetH)
         self.layer.masksToBounds = false
     }
+    
+    func roundCorners(corners: UIRectCorner) {
+        let path = UIBezierPath(roundedRect: self.bounds, cornerRadius: self.bounds.size.width / 2)
+        let mask = CAShapeLayer()
+        mask.path = path.cgPath
+        layer.mask = mask
+    }
 }
 
 extension String {

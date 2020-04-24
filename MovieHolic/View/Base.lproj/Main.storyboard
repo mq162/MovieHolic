@@ -289,6 +289,7 @@
                     <connections>
                         <outlet property="backdropImage" destination="aHD-M2-EZF" id="DNy-HA-GJs"/>
                         <outlet property="budgetLabel" destination="uwI-jH-K8M" id="YGb-Wz-iC7"/>
+                        <outlet property="castCollectionView" destination="zTp-dR-5NX" id="ZIm-NZ-wyU"/>
                         <outlet property="contentView" destination="VJs-9z-DHa" id="GHA-al-5tr"/>
                         <outlet property="languageLabel" destination="DgZ-Ae-X5z" id="nGw-Ic-G6o"/>
                         <outlet property="overviewLabel" destination="HP5-lp-R9S" id="uCq-1J-lC2"/>
