@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="searchCell" rowHeight="162" id="KGk-i7-Jjw" customClass="SearchTableViewCell" customModule="MovieHolic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="162"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="162"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tJO-bW-kbM" userLabel="Cell View">
+                        <rect key="frame" x="8" y="10" width="359" height="142"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Joker" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S3f-hX-64Y">
+                                <rect key="frame" x="118" y="10" width="211" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="q8h-8Y-kou"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozy-cW-aSk" userLabel="Overview Label">
+                                <rect key="frame" x="118" y="68" width="226" height="69"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="69" id="cmO-n2-eiI"/>
+                                </constraints>
+                                <string key="text">During the 1980s, a failed stand-up comedian is driven insane and turns to a life of crime and chaos in Gotham City while becoming an infamous psychopathic crime figure.</string>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DrM-E5-dyc" userLabel="Year Label">
+                                <rect key="frame" x="118" y="44" width="21" height="10"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="0xL-jy-V8D"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="9"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="DrM-E5-dyc" firstAttribute="leading" secondItem="tJO-bW-kbM" secondAttribute="leading" constant="118" id="0lB-hw-tDO"/>
+                            <constraint firstItem="S3f-hX-64Y" firstAttribute="top" secondItem="tJO-bW-kbM" secondAttribute="top" constant="10" id="26O-1a-CtE"/>
+                            <constraint firstItem="DrM-E5-dyc" firstAttribute="top" secondItem="S3f-hX-64Y" secondAttribute="bottom" constant="10" id="4c8-hY-jNn"/>
+                            <constraint firstItem="S3f-hX-64Y" firstAttribute="leading" secondItem="tJO-bW-kbM" secondAttribute="leading" constant="118" id="5Pb-mb-p90"/>
+                            <constraint firstAttribute="bottom" secondItem="ozy-cW-aSk" secondAttribute="bottom" constant="5" id="dcb-UM-wdq"/>
+                            <constraint firstItem="ozy-cW-aSk" firstAttribute="leading" secondItem="S3f-hX-64Y" secondAttribute="leading" id="edQ-jn-XBW"/>
+                            <constraint firstAttribute="trailing" secondItem="ozy-cW-aSk" secondAttribute="trailing" constant="15" id="wrR-vD-R6g"/>
+                            <constraint firstAttribute="trailing" secondItem="S3f-hX-64Y" secondAttribute="trailing" constant="30" id="yzI-dL-V7F"/>
+                        </constraints>
+                    </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FRp-Gd-Fr9">
+                        <rect key="frame" x="8" y="6" width="100" height="150"/>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="tJO-bW-kbM" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="2I5-CJ-MCM"/>
+                    <constraint firstItem="tJO-bW-kbM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="76y-Af-pKr"/>
+                    <constraint firstItem="FRp-Gd-Fr9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="BYu-dN-5gE"/>
+                    <constraint firstAttribute="trailing" secondItem="tJO-bW-kbM" secondAttribute="trailing" constant="8" id="DqL-gP-ngZ"/>
+                    <constraint firstAttribute="trailing" secondItem="FRp-Gd-Fr9" secondAttribute="trailing" constant="267" id="FeA-WR-fsW"/>
+                    <constraint firstItem="FRp-Gd-Fr9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="Icd-lM-PeY"/>
+                    <constraint firstAttribute="bottom" secondItem="tJO-bW-kbM" secondAttribute="bottom" constant="10" id="VCc-T2-HEu"/>
+                    <constraint firstAttribute="bottom" secondItem="FRp-Gd-Fr9" secondAttribute="bottom" constant="6" id="a5E-gl-v3w"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="movieImageView" destination="FRp-Gd-Fr9" id="GHd-99-uJm"/>
+                <outlet property="overviewLabel" destination="ozy-cW-aSk" id="TXt-pg-gwB"/>
+                <outlet property="titileLabel" destination="S3f-hX-64Y" id="cu3-sj-pEA"/>
+                <outlet property="yearLabel" destination="DrM-E5-dyc" id="3rI-rj-DeS"/>
+            </connections>
+            <point key="canvasLocation" x="176.08695652173915" y="169.41964285714286"/>
+        </tableViewCell>
+    </objects>
+</document>

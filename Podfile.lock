@@ -1,0 +1,24 @@
+PODS:
+  - Nuke (8.4.1)
+  - UICircularProgressRing (6.5.0)
+  - YoutubeDirectLinkExtractor (0.3.1)
+
+DEPENDENCIES:
+  - Nuke
+  - UICircularProgressRing
+  - YoutubeDirectLinkExtractor
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Nuke
+    - UICircularProgressRing
+    - YoutubeDirectLinkExtractor
+
+SPEC CHECKSUMS:
+  Nuke: d780e3507a86b86c589ab3cc5cd302d5456f06fb
+  UICircularProgressRing: e6852e8f88e296cbbbe2720cccb55241acda6708
+  YoutubeDirectLinkExtractor: de7abd36c0e3bb120b9b372f36450fbf9b51c01e
+
+PODFILE CHECKSUM: 2c9955ac7089cbdda4984101a7fa16552e25338e
+
+COCOAPODS: 1.7.5

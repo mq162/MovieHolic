@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="gTV-IL-0wX" customClass="VideoCollectionViewCell" customModule="MovieHolic" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="179" height="130"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="179" height="130"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kPz-HN-EOX">
+                        <rect key="frame" x="0.0" y="0.0" width="179" height="130"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i8v-Mv-nAb" userLabel="Shadow View">
+                                <rect key="frame" x="0.0" y="0.0" width="160" height="120"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="ixT-9T-Vha"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dSY-mD-guF" userLabel="Image View">
+                                <rect key="frame" x="0.0" y="0.0" width="160" height="90"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Exm-vn-ehw">
+                                        <rect key="frame" x="0.0" y="0.0" width="160" height="90"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="Exm-vn-ehw" firstAttribute="top" secondItem="dSY-mD-guF" secondAttribute="top" id="GUq-mi-tKT"/>
+                                    <constraint firstItem="Exm-vn-ehw" firstAttribute="leading" secondItem="dSY-mD-guF" secondAttribute="leading" id="KdG-hs-yub"/>
+                                    <constraint firstAttribute="bottom" secondItem="Exm-vn-ehw" secondAttribute="bottom" id="NKW-xH-EPx"/>
+                                    <constraint firstAttribute="height" constant="90" id="QFp-xv-2xP"/>
+                                    <constraint firstAttribute="trailing" secondItem="Exm-vn-ehw" secondAttribute="trailing" id="RqQ-hH-IgD"/>
+                                    <constraint firstAttribute="width" constant="160" id="U8g-rD-lN7"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JOKER - Teaser Trailer number 1" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWC-5r-L4S">
+                                <rect key="frame" x="0.0" y="90" width="159" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="JWC-5r-L4S" secondAttribute="bottom" constant="10" id="BnI-4V-H5F"/>
+                            <constraint firstItem="i8v-Mv-nAb" firstAttribute="top" secondItem="kPz-HN-EOX" secondAttribute="top" id="MpR-8U-GvP"/>
+                            <constraint firstItem="dSY-mD-guF" firstAttribute="leading" secondItem="kPz-HN-EOX" secondAttribute="leading" id="NXa-Yc-9jN"/>
+                            <constraint firstItem="JWC-5r-L4S" firstAttribute="top" secondItem="dSY-mD-guF" secondAttribute="bottom" id="SXg-K8-4FF"/>
+                            <constraint firstAttribute="trailing" secondItem="JWC-5r-L4S" secondAttribute="trailing" constant="20" id="UfS-0x-6La"/>
+                            <constraint firstAttribute="height" constant="130" id="bMi-VL-bQh"/>
+                            <constraint firstAttribute="width" constant="179" id="f7c-md-ov4"/>
+                            <constraint firstAttribute="bottom" secondItem="i8v-Mv-nAb" secondAttribute="bottom" constant="10" id="lLc-aN-Ahu"/>
+                            <constraint firstItem="JWC-5r-L4S" firstAttribute="leading" secondItem="kPz-HN-EOX" secondAttribute="leading" id="pTB-sn-HxG"/>
+                            <constraint firstItem="dSY-mD-guF" firstAttribute="top" secondItem="kPz-HN-EOX" secondAttribute="top" id="vgM-9b-Ejo"/>
+                            <constraint firstItem="i8v-Mv-nAb" firstAttribute="leading" secondItem="kPz-HN-EOX" secondAttribute="leading" id="yFI-6r-CV2"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="kPz-HN-EOX" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="9SE-iW-8QY"/>
+                <constraint firstAttribute="bottom" secondItem="kPz-HN-EOX" secondAttribute="bottom" id="CUd-Kn-aPL"/>
+                <constraint firstAttribute="trailing" secondItem="kPz-HN-EOX" secondAttribute="trailing" id="atd-IX-4Qb"/>
+                <constraint firstItem="kPz-HN-EOX" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="eoz-ZP-hYH"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="imageShadowView" destination="dSY-mD-guF" id="8Ug-6I-j6w"/>
+                <outlet property="previewImage" destination="Exm-vn-ehw" id="IAb-Fo-gZd"/>
+                <outlet property="shadowView" destination="i8v-Mv-nAb" id="Y3h-S3-K6M"/>
+                <outlet property="titleLabel" destination="JWC-5r-L4S" id="qnM-At-7Nx"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="122.54464285714285"/>
+        </collectionViewCell>
+    </objects>
+</document>
