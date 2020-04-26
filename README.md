@@ -4,7 +4,7 @@
 
 ## Overview
 
-Using brand new iOS 13 CollectionViewCompositionalLayout & DiffableDataSource API to build the collection view layout & data source     
+Using brand new iOS 13 CompositionalLayout & DiffableDataSource API to build the collectionview layout & data source     
 Using Realm as local storage.
 
 ## Features
