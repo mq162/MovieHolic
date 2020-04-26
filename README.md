@@ -4,11 +4,10 @@
 
 ## Overview
 
-Using NSDiffableDataSourceSnapshot iOS 13 API to build the collection view data source.
-Using UICollectionViewCompositionalLayout iOS 13 API to build the collection view sections and groups.
+Using brand new iOS 13 CollectionViewCompositionalLayout & DiffableDataSource API to build the collection view layout & data source.
 Using Realm as local storage.
 
-**Features:**
+## Features
 
 1. List of Popular, Top Rate, Now Playing movies.
 2. Bookmark movies to Favorite list.
