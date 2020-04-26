@@ -1,5 +1,6 @@
 # MovieHolic
-[IOS] A simple Todo app using Swift
+
+[IOS] It's an app where you can find out about popular, top rated, now playing movies, or search for specific movies.You can also see information of a movie and watch trailers. Application uses TMDB API. [See API](https://developers.themoviedb.org/3/getting-started/introduction) for details.
 
 Setup
 -----
