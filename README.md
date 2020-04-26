@@ -4,23 +4,28 @@
 
 ## Overview
 
-Codestyle enforced by SwiftLint.
 Used as less as possible third party libraries, only when it's neccessary.
 All pull request are reviewed.
+
+**Features:**
+
+1. List of Popular, Top Rate, Now Playing movies.
+2. Bookmark movies to Favorite list.
+3. Search movies.
+4. Detailed screen of the movie with overview, videos, cast...
 
 Setup
 -----
 
 ```ruby
 $ git clone https://github.com/mq162/MovieHolic
-$ cd Work-Today
 $ pod install
 ```
 
 Requirements
 -----
 
-Work Today requires Swift 5.1 and Xcode 11.2.
+MovieHolic requires Swift 5.1 and Xcode 11.2.
 
 Author
 -----
