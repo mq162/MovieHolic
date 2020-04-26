@@ -11,7 +11,6 @@ import UIKit
 class CastCollectionViewCell: UICollectionViewCell {
     
     static let identifier = String(describing: CastCollectionViewCell.self)
-    static let size = CGSize(width: 180, height: 100)
     
     @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var castLabel: UILabel!

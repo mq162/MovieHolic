@@ -13,6 +13,7 @@ class MovieViewController: UIViewController {
     @IBOutlet weak var moviePreferences: UISegmentedControl!
     @IBOutlet weak var movieCollectionView: UICollectionView!
     @IBOutlet weak var bannerCollectionView: UICollectionView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     private lazy var networking = Networking()
     private var movieArray: [Movie] = []
@@ -39,14 +40,20 @@ class MovieViewController: UIViewController {
     @IBAction func movieTypesSelected(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
+            self.activityIndicator.isHidden = false
+            self.activityIndicator.startAnimating()
             movieArray = []
             networking.strategy = .popular
             fetchMovies()
         case 1:
+            self.activityIndicator.isHidden = false
+            self.activityIndicator.startAnimating()
             movieArray = []
             networking.strategy = .nowPlaying
             fetchMovies()
         case 2:
+            self.activityIndicator.isHidden = false
+            self.activityIndicator.startAnimating()
             movieArray = []
             networking.strategy = .topRated
             fetchMovies()
@@ -82,13 +89,12 @@ class MovieViewController: UIViewController {
     func configureDataSource() {
         
         dataSource = UICollectionViewDiffableDataSource<Section, Movie>(collectionView: movieCollectionView) {
-        (collectionView: UICollectionView, indexPath: IndexPath, movie: Movie) -> UICollectionViewCell? in
+        (collectionView: UICollectionView, indexPath: IndexPath, movie: Movie?) -> UICollectionViewCell? in
             
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as? MovieCell else { fatalError("Cannot create new cell")}
             
-            cell.nameLabel.text = "\(movie.title)"
-            cell.movieImageView.loadPicture(posterPath: movie.posterPath)
-
+            cell.nameLabel.text = "\(movie?.title ?? "")"
+            cell.movieImageView.loadPicture(posterPath: movie?.posterPath)
             return cell
         }
     }
@@ -102,9 +108,10 @@ class MovieViewController: UIViewController {
             guard let self = self else {
                 return
             }
-            
-                self.movieArray.append(contentsOf: movies)
-                self.handle(self.movieArray)
+               self.movieArray.append(contentsOf: movies)
+               self.handle(self.movieArray)
+               self.activityIndicator.isHidden = true
+               self.activityIndicator.stopAnimating()
             
         }
     }

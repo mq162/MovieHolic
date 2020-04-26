@@ -10,5 +10,6 @@ target 'MovieHolic' do
 pod 'Nuke'
 pod 'UICircularProgressRing'
 pod 'YoutubeDirectLinkExtractor'
+pod 'RealmSwift'
 
 end

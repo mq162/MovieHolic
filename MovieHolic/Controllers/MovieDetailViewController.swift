@@ -25,9 +25,12 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var languageLabel: UILabel!
     @IBOutlet weak var videosCollectionView: UICollectionView!
     @IBOutlet weak var castCollectionView: UICollectionView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var favouriteItem: UIBarButtonItem!
     
     var progressRing: UICircularProgressRing!
     var movieId: Int?
+    private var isFavorite = false
     var networking = Networking()
     var detailedMovie: DetailedMovie?
     var extractor = LinkExtractor()
@@ -43,6 +46,7 @@ class MovieDetailViewController: UIViewController {
 
         loadDetails()
         configureView()
+        checkFavorite()
         
         progressRing = UICircularProgressRing(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         rateView.backgroundColor = #colorLiteral(red: 0.03137254902, green: 0.1098039216, blue: 0.1333333333, alpha: 1)
@@ -55,7 +59,21 @@ class MovieDetailViewController: UIViewController {
         rateView.addSubview(progressRing)
     }
     
+    
+    
     override func viewDidAppear(_ animated: Bool) {
+        if let vote = detailedMovie?.voteAverage {
+            if vote >= 7.0 {
+                progressRing.innerRingColor = #colorLiteral(red: 0.1294117647, green: 0.8156862745, blue: 0.4784313725, alpha: 1)
+                progressRing.outerRingColor = #colorLiteral(red: 0.1215686275, green: 0.2705882353, blue: 0.1607843137, alpha: 1)
+            } else if vote >= 4.0 && vote < 7.0 {
+                progressRing.innerRingColor = #colorLiteral(red: 0.8235294118, green: 0.8352941176, blue: 0.1960784314, alpha: 1)
+                progressRing.outerRingColor = #colorLiteral(red: 0.262745098, green: 0.2392156863, blue: 0.05882352941, alpha: 1)
+            } else {
+                progressRing.innerRingColor = #colorLiteral(red: 0.8588235294, green: 0.1333333333, blue: 0.3764705882, alpha: 1)
+                progressRing.outerRingColor = #colorLiteral(red: 0.3411764706, green: 0.07843137255, blue: 0.2078431373, alpha: 1)
+            }
+        }
         progressRing.startProgress(to: CGFloat((detailedMovie?.voteAverage ?? 0.0) * 10.0), duration: 1)
     }
     
@@ -94,6 +112,8 @@ class MovieDetailViewController: UIViewController {
     }
     
     private func configureView() {
+        activityIndicator.startAnimating()
+        hideMovieInformation(hidden: true)
         contentView.applyShadow(radius: 20, opacity: 0.1, offsetW: 4, offsetH: 4)
         contentView.layer.cornerRadius = 10
         contentView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
@@ -109,27 +129,24 @@ class MovieDetailViewController: UIViewController {
     
     private func updateView() {
         
-        backdropImage.loadFullPicture(path: detailedMovie?.backdropPath)
+        activityIndicator.stopAnimating()
+        activityIndicator.isHidden = true
+        hideMovieInformation(hidden: false)
+        
+        if detailedMovie?.backdropPath == nil {
+            backdropImage.contentMode = .center
+            backdropImage.backgroundColor = #colorLiteral(red: 0.8643174767, green: 0.8683180809, blue: 0.8780947328, alpha: 1)
+            backdropImage.image = UIImage(named: "noBackdrop")
+        } else {
+            backdropImage.loadFullPicture(path: detailedMovie?.backdropPath)
+        }
         backdropImage.layer.cornerRadius = 10
-        //backdropImage.applyShadow(radius: 10, opacity: 0.2, offsetW: 2, offsetH: 2)
-        //backdropImage.addBlurEffect()
         titleLabel.text = detailedMovie?.title
         taglineLabel.text = detailedMovie?.tagline
         overviewLabel.text = detailedMovie?.overview
         releaseDateLabel.text = detailedMovie?.releaseDate?.formatDate()
         
-        if let vote = detailedMovie?.voteAverage {
-            if vote >= 7.0 {
-                progressRing.innerRingColor = #colorLiteral(red: 0.1294117647, green: 0.8156862745, blue: 0.4784313725, alpha: 1)
-                progressRing.outerRingColor = #colorLiteral(red: 0.1215686275, green: 0.2705882353, blue: 0.1607843137, alpha: 1)
-            } else if vote >= 4.0 && vote < 7.0 {
-                progressRing.innerRingColor = #colorLiteral(red: 0.8235294118, green: 0.8352941176, blue: 0.1960784314, alpha: 1)
-                progressRing.outerRingColor = #colorLiteral(red: 0.262745098, green: 0.2392156863, blue: 0.05882352941, alpha: 1)
-            } else {
-                progressRing.innerRingColor = #colorLiteral(red: 0.8588235294, green: 0.1333333333, blue: 0.3764705882, alpha: 1)
-                progressRing.outerRingColor = #colorLiteral(red: 0.3411764706, green: 0.07843137255, blue: 0.2078431373, alpha: 1)
-            }
-        }
+        
         
         if detailedMovie?.budget == 0 {
             budgetLabel.text = "Information is coming soon"
@@ -152,7 +169,44 @@ class MovieDetailViewController: UIViewController {
         languageLabel.text = detailedMovie?.originalLanguage 
         
     }
+    
+    private func hideMovieInformation(hidden isHidden: Bool) {
+        titleLabel.isHidden = isHidden
+        overviewLabel.isHidden = isHidden
+        releaseDateLabel.isHidden = isHidden
+        taglineLabel.isHidden = isHidden
+        releaseDateLabel.isHidden = isHidden
+        runtimeLabel.isHidden = isHidden
+        budgetLabel.isHidden = isHidden
+        revenueLabel.isHidden = isHidden
+        languageLabel.isHidden = isHidden
+        rateView.isHidden = isHidden
+    }
 
+    @IBAction func favouriteButtonPressed(_ sender: UIBarButtonItem) {
+        if isFavorite {
+            isFavorite = false
+            favouriteItem.image = UIImage(systemName: "star")
+            networking.removeMovie(id: movieId)
+            networking.removeDetailedMovie(id: movieId)
+        } else {
+            isFavorite = true
+            favouriteItem.image = UIImage(systemName: "star.fill")
+            networking.saveDetailedMovie(detailedMovie: detailedMovie)
+            networking.saveMovie(detailedMovie: detailedMovie)
+        }
+        
+    }
+    
+    private func checkFavorite() {
+        if networking.isListedMovie(id: movieId) {
+            isFavorite = true
+            favouriteItem.image = UIImage(systemName: "star.fill")
+        } else {
+            isFavorite = false
+            favouriteItem.image = UIImage(systemName: "star")
+        }
+    }
 }
 
 //MARK: - CollectionView Data Source
@@ -209,16 +263,3 @@ extension MovieDetailViewController: UICollectionViewDelegate {
         }
 }
 
-//MARK: - CollectionView Flow Layout
-extension MovieDetailViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView,layout collectionViewLayout: UICollectionViewLayout,
-                        sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView == castCollectionView {
-            return CastCollectionViewCell.size
-        } else if collectionView == videosCollectionView {
-            return VideoCollectionViewCell.size
-        } else {
-            return CGSize(width: 0, height: 0)
-        }
-    }
-}

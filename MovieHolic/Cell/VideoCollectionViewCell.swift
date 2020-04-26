@@ -11,7 +11,6 @@ import UIKit
 class VideoCollectionViewCell: UICollectionViewCell {
     
     static let identifier = String(describing: VideoCollectionViewCell.self)
-    static let size = CGSize(width: 179, height: 130)
 
     @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var imageShadowView: UIView!

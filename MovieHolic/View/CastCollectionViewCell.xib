@@ -20,13 +20,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="180" height="100"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7dG-d6-o9q" userLabel="Shadow View">
-                                <rect key="frame" x="0.0" y="0.0" width="174" height="87"/>
+                                <rect key="frame" x="0.0" y="6" width="174" height="87"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sD2-fc-ZiV">
                                         <rect key="frame" x="0.0" y="0.0" width="64" height="87"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="87" id="KxQ-d3-KPM"/>
-                                            <constraint firstAttribute="width" constant="64" id="ljf-Aa-PXY"/>
+                                            <constraint firstAttribute="width" constant="64" id="9hm-vp-RCg"/>
+                                            <constraint firstAttribute="height" constant="87" id="FAQ-yh-fTW"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Neal McDonough Brian" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rzg-Ae-pvK" userLabel="Cast Label">
@@ -36,7 +36,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="as" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LgX-gI-QrR">
-                                        <rect key="frame" x="113" y="36.5" width="12" height="14"/>
+                                        <rect key="frame" x="113.5" y="36.5" width="12" height="14"/>
                                         <fontDescription key="fontDescription" type="italicSystem" pointSize="11"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -50,15 +50,15 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
+                                    <constraint firstItem="LgX-gI-QrR" firstAttribute="centerY" secondItem="sD2-fc-ZiV" secondAttribute="centerY" id="4Sm-5g-21v"/>
                                     <constraint firstItem="9wc-Vu-Vtd" firstAttribute="top" secondItem="LgX-gI-QrR" secondAttribute="bottom" id="6C9-EW-b9p"/>
                                     <constraint firstAttribute="bottom" secondItem="sD2-fc-ZiV" secondAttribute="bottom" id="9n9-rD-qEM"/>
-                                    <constraint firstItem="LgX-gI-QrR" firstAttribute="centerY" secondItem="7dG-d6-o9q" secondAttribute="centerY" id="IXP-OZ-plK"/>
                                     <constraint firstItem="LgX-gI-QrR" firstAttribute="top" secondItem="Rzg-Ae-pvK" secondAttribute="bottom" id="JzU-kN-ZQd"/>
+                                    <constraint firstItem="LgX-gI-QrR" firstAttribute="centerX" secondItem="Rzg-Ae-pvK" secondAttribute="centerX" id="K1g-Wj-eTg"/>
                                     <constraint firstItem="9wc-Vu-Vtd" firstAttribute="leading" secondItem="sD2-fc-ZiV" secondAttribute="trailing" constant="5" id="LVS-aC-Zzh"/>
                                     <constraint firstAttribute="trailing" secondItem="9wc-Vu-Vtd" secondAttribute="trailing" constant="4" id="LpV-l5-fdl"/>
                                     <constraint firstItem="Rzg-Ae-pvK" firstAttribute="leading" secondItem="sD2-fc-ZiV" secondAttribute="trailing" constant="5" id="Nnu-C9-Our"/>
                                     <constraint firstItem="sD2-fc-ZiV" firstAttribute="top" secondItem="7dG-d6-o9q" secondAttribute="top" id="OfP-l5-VaB"/>
-                                    <constraint firstItem="LgX-gI-QrR" firstAttribute="leading" secondItem="sD2-fc-ZiV" secondAttribute="trailing" constant="49" id="XOJ-qE-YGK"/>
                                     <constraint firstItem="Rzg-Ae-pvK" firstAttribute="top" secondItem="7dG-d6-o9q" secondAttribute="top" constant="5" id="dmh-EA-OAQ"/>
                                     <constraint firstAttribute="trailing" secondItem="Rzg-Ae-pvK" secondAttribute="trailing" constant="4" id="fuB-5R-szi"/>
                                     <constraint firstAttribute="bottom" secondItem="9wc-Vu-Vtd" secondAttribute="bottom" constant="5" id="qTi-qh-i4M"/>
@@ -69,11 +69,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="7dG-d6-o9q" secondAttribute="trailing" constant="6" id="0bg-oF-1rg"/>
-                            <constraint firstItem="7dG-d6-o9q" firstAttribute="top" secondItem="aIg-hd-ZWL" secondAttribute="top" id="GTG-fM-Zd0"/>
+                            <constraint firstItem="7dG-d6-o9q" firstAttribute="top" secondItem="aIg-hd-ZWL" secondAttribute="top" constant="6" id="GTG-fM-Zd0"/>
                             <constraint firstItem="7dG-d6-o9q" firstAttribute="leading" secondItem="aIg-hd-ZWL" secondAttribute="leading" id="HHT-Tj-PrE"/>
-                            <constraint firstAttribute="height" constant="100" id="OiW-Hd-kaj"/>
-                            <constraint firstAttribute="width" constant="180" id="QRl-Yp-fdn"/>
-                            <constraint firstAttribute="bottom" secondItem="7dG-d6-o9q" secondAttribute="bottom" constant="13" id="dOH-bE-ppR"/>
+                            <constraint firstAttribute="bottom" secondItem="7dG-d6-o9q" secondAttribute="bottom" constant="7" id="dOH-bE-ppR"/>
+                            <constraint firstAttribute="width" constant="180" id="i9p-nd-cl0"/>
+                            <constraint firstAttribute="height" constant="100" id="pIC-dO-V1S"/>
                         </constraints>
                     </view>
                 </subviews>
