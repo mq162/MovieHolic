@@ -11,7 +11,7 @@ import UICircularProgressRing
 import AVKit
 
 class MovieDetailViewController: UIViewController {
-
+    
     @IBOutlet weak var backdropImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var taglineLabel: UILabel!
@@ -28,12 +28,12 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var favouriteItem: UIBarButtonItem!
     
-    var progressRing: UICircularProgressRing!
+    private var progressRing: UICircularProgressRing!
     var movieId: Int?
     private var isFavorite = false
-    var networking = Networking()
-    var detailedMovie: DetailedMovie?
-    var extractor = LinkExtractor()
+    private lazy var networking = Networking()
+    private var detailedMovie: DetailedMovie?
+    private var extractor = LinkExtractor()
     private var videos: [Video] = []
     private var cast: [CastEntry] = []
     
@@ -138,7 +138,7 @@ class MovieDetailViewController: UIViewController {
             backdropImage.backgroundColor = #colorLiteral(red: 0.8643174767, green: 0.8683180809, blue: 0.8780947328, alpha: 1)
             backdropImage.image = UIImage(named: "noBackdrop")
         } else {
-            backdropImage.loadFullPicture(path: detailedMovie?.backdropPath)
+            backdropImage.loadBackdrop(path: detailedMovie?.backdropPath)
         }
         backdropImage.layer.cornerRadius = 10
         titleLabel.text = detailedMovie?.title
@@ -229,10 +229,10 @@ extension MovieDetailViewController: UICollectionViewDataSource {
             cell?.configure(video: videos[indexPath.row])
             return cell ?? UICollectionViewCell()
         } else if collectionView == castCollectionView {
-              let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CastCollectionViewCell.identifier,
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CastCollectionViewCell.identifier,
                                                           for: indexPath) as? CastCollectionViewCell
-              cell?.configureCast(castEntry: cast[indexPath.row])
-              return cell ?? UICollectionViewCell()
+            cell?.configureCast(castEntry: cast[indexPath.row])
+            return cell ?? UICollectionViewCell()
         }else {
             return UICollectionViewCell()
         }

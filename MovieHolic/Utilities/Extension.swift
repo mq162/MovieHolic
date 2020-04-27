@@ -10,18 +10,17 @@ import UIKit
 import Nuke
 
 extension UIImageView {
-    func loadPicture(posterPath: String?) {
-        let blankImageUrl = "https://image.tmdb.org/t/p/w500"
+    
+    func loadPoster(posterPath: String?) {
         if let pathNotNil = posterPath,
-            let imageUrl = URL(string: blankImageUrl + pathNotNil) {
+            let imageUrl = URL(string: K.baseImageUrl.poster + pathNotNil) {
             Nuke.loadImage(with: imageUrl, into: self)
         }
     }
-
-    func loadFullPicture(path: String?) {
-        let blankImageUrl = "https://image.tmdb.org/t/p/original"
+    
+    func loadBackdrop(path: String?) {
         if let pathNotNil = path,
-            let imageUrl = URL(string: blankImageUrl + pathNotNil) {
+            let imageUrl = URL(string: K.baseImageUrl.backdrop + pathNotNil) {
             Nuke.loadImage(with: imageUrl, into: self)
         }
     }
@@ -30,10 +29,19 @@ extension UIImageView {
         guard let key = key else {
             return
         }
-        let blankImageUrl = "https://img.youtube.com/vi/\(key)/0.jpg"
-        if let imageUrl = URL(string: blankImageUrl) {
+        let baseImageUrl = "https://img.youtube.com/vi/\(key)/0.jpg"
+        if let imageUrl = URL(string: baseImageUrl) {
             Nuke.loadImage(with: imageUrl, into: self)
         }
+    }
+    
+    func addBlurEffect() {
+        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = self.bounds
+        
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight] // for supporting device rotation
+        self.addSubview(blurEffectView)
     }
 }
 
@@ -61,20 +69,8 @@ extension URL {
     }
 }
 
-extension UIImageView
-{
-    func addBlurEffect()
-    {
-        let blurEffect = UIBlurEffect(style: UIBlurEffect.Style.dark)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = self.bounds
-
-        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight] // for supporting device rotation
-        self.addSubview(blurEffectView)
-    }
-}
-
 extension UIView {
+    
     func makeCircular() {
         self.layer.cornerRadius = min(self.frame.size.height, self.frame.size.width) / 2.0
         self.clipsToBounds = true

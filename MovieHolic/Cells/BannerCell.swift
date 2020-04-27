@@ -1,5 +1,5 @@
 //
-//  MovieCell.swift
+//  BannerCell.swift
 //  MovieHolic
 //
 //  Created by apple on 3/31/20.
@@ -8,13 +8,16 @@
 
 import UIKit
 
-class MovieCell: UICollectionViewCell {
-
-    @IBOutlet weak var movieImageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
+class BannerCell: UICollectionViewCell {
+    
+    static let identifier = String(describing: BannerCell.self)
+    
+    @IBOutlet weak var bannerImage: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
 }
+
+

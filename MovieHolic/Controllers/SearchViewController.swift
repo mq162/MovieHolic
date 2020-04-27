@@ -93,14 +93,14 @@ extension SearchViewController: UITableViewDelegate {
        }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "searchToDetail", sender: self)
+        performSegue(withIdentifier: K.segueIdentifier.search, sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let detailVC = segue.destination as! MovieDetailViewController
         if let indexPath = tableView.indexPathForSelectedRow {
-            detailVC.movieId = movies[indexPath.row].id
+            detailVC.movieId = movies[indexPath.row].id 
         }
     }
     

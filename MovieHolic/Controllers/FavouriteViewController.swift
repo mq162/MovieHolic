@@ -46,7 +46,7 @@ class FavouriteViewController: UIViewController {
 
 extension FavouriteViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "favouriteToDetail", sender: self)
+        performSegue(withIdentifier: K.segueIdentifier.favourite, sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -57,8 +57,6 @@ extension FavouriteViewController: UITableViewDelegate {
         }
     }
 }
-
-
 
 // MARK: - TableViewDataSource
 

@@ -11,7 +11,6 @@ import UIKit
 class SearchTableViewCell: UITableViewCell {
     
     static let identifier = String(describing: SearchTableViewCell.self)
-    
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
@@ -37,7 +36,7 @@ class SearchTableViewCell: UITableViewCell {
             posterImage.image = UIImage(named: "noImage")
         } else {
             posterImage.contentMode = .scaleAspectFill
-            posterImage.loadPicture(posterPath: movie.posterPath)
+            posterImage.loadPoster(posterPath: movie.posterPath)
         }
         
     }

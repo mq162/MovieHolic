@@ -26,7 +26,7 @@ class CastCollectionViewCell: UICollectionViewCell {
         if castEntry.profilePath == nil {
             castImage.image = UIImage(named: "anonymous")
         } else {
-            castImage.loadPicture(posterPath: castEntry.profilePath)
+            castImage.loadPoster(posterPath: castEntry.profilePath)
         }
         castLabel.text = castEntry.name
         characterLabel.text = castEntry.character

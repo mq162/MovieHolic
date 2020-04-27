@@ -26,19 +26,19 @@ class Networking {
         var url: URL?
         switch strategy {
         case .popular:
-            url = URL(string: UrlParts.baseUrl + "movie/popular")
+            url = URL(string: K.baseUrl + "movie/popular")
         case .upcoming:
-            url = URL(string: UrlParts.baseUrl + "movie/upcoming")
+            url = URL(string: K.baseUrl + "movie/upcoming")
         case .topRated:
-            url = URL(string: UrlParts.baseUrl + "movie/top_rated")
+            url = URL(string: K.baseUrl + "movie/top_rated")
         case .nowPlaying:
-            url = URL(string: UrlParts.baseUrl + "movie/now_playing")
+            url = URL(string: K.baseUrl + "movie/now_playing")
         case .search(let query):
-           url = URL(string: UrlParts.baseUrl + "search/movie")
+           url = URL(string: K.baseUrl + "search/movie")
             url = url?.appending("query", value: query)
         }
         
-        url = url?.appending("api_key", value: UrlParts.apiKey)
+        url = url?.appending("api_key", value: K.apiKey)
         url = url?.appending("page", value: String(currentPage))
 
         guard let urlNotNil = url else {
@@ -78,8 +78,8 @@ class Networking {
     
     func loadDetails(movieId: Int, completion: @escaping (DetailedMovie?) -> Void) {
         var url: URL?
-        url = URL(string: UrlParts.baseUrl + "movie/\(movieId)")
-        url = url?.appending("api_key", value: UrlParts.apiKey)
+        url = URL(string: K.baseUrl + "movie/\(movieId)")
+        url = url?.appending("api_key", value: K.apiKey)
         guard let urlNotNil = url else {
             return
         }
@@ -102,8 +102,8 @@ class Networking {
     
     func loadVideos(movieId: Int, completion: @escaping ([Video]?) -> Void) {
         var url: URL?
-        url = URL(string: UrlParts.baseUrl + "movie/\(movieId)/videos")
-        url = url?.appending("api_key", value: UrlParts.apiKey)
+        url = URL(string: K.baseUrl + "movie/\(movieId)/videos")
+        url = url?.appending("api_key", value: K.apiKey)
         guard let urlNotNil = url else {
             return
         }
@@ -126,8 +126,8 @@ class Networking {
     
     func loadCast(movieId: Int, completion: @escaping ([CastEntry]?) -> Void) {
         guard
-            let url = URL(string: UrlParts.baseUrl + "movie/\(movieId)/credits")?
-                .appending("api_key", value: UrlParts.apiKey)
+            let url = URL(string: K.baseUrl + "movie/\(movieId)/credits")?
+                .appending("api_key", value: K.apiKey)
         else {
             return
         }

@@ -18,16 +18,17 @@ class MovieViewController: UIViewController {
     private lazy var networking = Networking()
     private var movieArray: [Movie] = []
     
-    var dataSource: UICollectionViewDiffableDataSource<Section, Movie>! = nil
-    typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Movie>
+    private var dataSource: UICollectionViewDiffableDataSource<Section, Movie>! = nil
+    private typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Movie>
     
     private var currentSnapshot: Snapshot?
-    var timer: Timer!
+    private var timer: Timer!
             
     override func viewDidLoad() {
         super.viewDidLoad()
-        movieCollectionView.register(UINib(nibName: "MovieCell", bundle: nil), forCellWithReuseIdentifier: "movieCell")
-        bannerCollectionView.register(UINib(nibName: "BannerCell", bundle: nil), forCellWithReuseIdentifier: "bannerCell")
+        
+        movieCollectionView.register(UINib(nibName: MovieCell.identifier, bundle: nil), forCellWithReuseIdentifier: MovieCell.identifier)
+        bannerCollectionView.register(UINib(nibName: BannerCell.identifier, bundle: nil), forCellWithReuseIdentifier: BannerCell.identifier)
         bannerCollectionView.dataSource = self
         movieCollectionView.delegate = self
         movieCollectionView.collectionViewLayout = .createLayout()
@@ -61,11 +62,11 @@ class MovieViewController: UIViewController {
             break
         }
    }
-    
+    // handle banner collectionView auto scroll behavior
     @objc func scrollToNextCell(){
-
+        
         let cellSize = CGSize(width: self.view.frame.width, height: self.view.frame.height)
-
+        
         //get current content Offset of the Collection view
         let contentOffset = bannerCollectionView.contentOffset
         
@@ -79,52 +80,54 @@ class MovieViewController: UIViewController {
         }
     }
 
-    func startTimer() {
-
-        self.timer = Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(scrollToNextCell), userInfo: nil, repeats: true);
+    private func startTimer() {
+        
+        self.timer = Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(scrollToNextCell), userInfo: nil, repeats: true)
     }
     
 //MARK: - Configure Movie Data
     
-    func configureDataSource() {
+    private func configureDataSource() {
         
         dataSource = UICollectionViewDiffableDataSource<Section, Movie>(collectionView: movieCollectionView) {
         (collectionView: UICollectionView, indexPath: IndexPath, movie: Movie?) -> UICollectionViewCell? in
             
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "movieCell", for: indexPath) as? MovieCell else { fatalError("Cannot create new cell")}
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCell.identifier, for: indexPath) as? MovieCell else { fatalError("Cannot create new cell")}
             
             cell.nameLabel.text = "\(movie?.title ?? "")"
-            cell.movieImageView.loadPicture(posterPath: movie?.posterPath)
+            cell.movieImageView.loadPoster(posterPath: movie?.posterPath)
             return cell
         }
     }
     
+    // fetch data from API
     private func fetchMovies() {
         networking.loadMovies { [weak self] (results) in
             guard let movies = results
-             else {
-                return
+                else {
+                    return
             }
             guard let self = self else {
                 return
             }
-               self.movieArray.append(contentsOf: movies)
-               self.handle(self.movieArray)
-               self.activityIndicator.isHidden = true
-               self.activityIndicator.stopAnimating()
+            DispatchQueue.main.async {
+                self.movieArray.append(contentsOf: movies)
+                self.handle(self.movieArray)
+            }
+            self.activityIndicator.isHidden = true
+            self.activityIndicator.stopAnimating()
             
         }
     }
     
-    func handle(_ movies: [Movie]) {
-        
-        // initial data
+    private func handle(_ movies: [Movie]) {
+        // initialize data
         var snapshot = NSDiffableDataSourceSnapshot<Section, Movie>()
         
-           snapshot.appendSections([.main])
-           snapshot.appendItems(movies)
-           self.dataSource.apply(snapshot, animatingDifferences: true)
-            
+        snapshot.appendSections([.main])
+        snapshot.appendItems(movies)
+        self.dataSource.apply(snapshot, animatingDifferences: true)
+        
     }
 
 
@@ -137,7 +140,7 @@ extension MovieViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = bannerCollectionView.dequeueReusableCell(withReuseIdentifier: "bannerCell", for: indexPath) as! BannerCell
+        guard let cell = bannerCollectionView.dequeueReusableCell(withReuseIdentifier: BannerCell.identifier, for: indexPath) as? BannerCell else { fatalError("Cannot create new cell") }
         let bannerName = String(indexPath.item + 1)
         cell.bannerImage.image = UIImage(named: bannerName)
         return cell
@@ -149,15 +152,17 @@ extension MovieViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.item == movieArray.count - 5, networking.canLoadMore == true {
-                self.fetchMovies()
+            self.fetchMovies()
         }
     }
     
+    //Navigation
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "moviesToDetail", sender: self)
+        performSegue(withIdentifier: K.segueIdentifier.feed, sender: self)
         
     }
     
+    // Prepare Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let detailVC = segue.destination as! MovieDetailViewController
         if let indexPath = movieCollectionView.indexPathsForSelectedItems {
