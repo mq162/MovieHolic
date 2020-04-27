@@ -361,7 +361,7 @@
         <!--Movies-->
         <scene sceneID="XiZ-re-T7X">
             <objects>
-                <viewController id="Gwc-xd-5F1" customClass="MovieViewController" customModule="MovieHolic" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Gwc-xd-5F1" customClass="FeedViewController" customModule="MovieHolic" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2FE-Gl-DrM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -424,7 +424,7 @@
                         <outlet property="bannerCollectionView" destination="lq3-dD-iz7" id="ect-rW-5G2"/>
                         <outlet property="movieCollectionView" destination="BEV-qV-Dke" id="d7b-tx-WeC"/>
                         <outlet property="moviePreferences" destination="AOs-jR-0pp" id="sTt-ca-Bhv"/>
-                        <segue destination="owu-77-erG" kind="show" identifier="moviesToDetail" id="GZQ-pX-rxZ"/>
+                        <segue destination="owu-77-erG" kind="show" identifier="feedToDetail" id="GZQ-pX-rxZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NOS-B6-HbW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

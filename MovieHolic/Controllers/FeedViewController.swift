@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MovieViewController: UIViewController {
+class FeedViewController: UIViewController {
 
     @IBOutlet weak var moviePreferences: UISegmentedControl!
     @IBOutlet weak var movieCollectionView: UICollectionView!
@@ -37,32 +37,34 @@ class MovieViewController: UIViewController {
         startTimer()
         
     }
-    
+        
     @IBAction func movieTypesSelected(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            self.activityIndicator.isHidden = false
-            self.activityIndicator.startAnimating()
-            movieArray = []
             networking.strategy = .popular
-            fetchMovies()
+            segmentBehavior()
         case 1:
-            self.activityIndicator.isHidden = false
-            self.activityIndicator.startAnimating()
-            movieArray = []
             networking.strategy = .nowPlaying
-            fetchMovies()
+            segmentBehavior()
         case 2:
-            self.activityIndicator.isHidden = false
-            self.activityIndicator.startAnimating()
-            movieArray = []
             networking.strategy = .topRated
-            fetchMovies()
+            segmentBehavior()
         default:
             break
         }
    }
-    // handle banner collectionView auto scroll behavior
+    
+    func segmentBehavior() {
+        self.activityIndicator.isHidden = false
+        self.activityIndicator.startAnimating()
+        movieArray = []
+        fetchMovies()
+        movieCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+    }
+    
+    
+  //MARK: - Banner CollectionView Auto Scroll Behavior
+    
     @objc func scrollToNextCell(){
         
         let cellSize = CGSize(width: self.view.frame.width, height: self.view.frame.height)
@@ -94,8 +96,9 @@ class MovieViewController: UIViewController {
             
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCell.identifier, for: indexPath) as? MovieCell else { fatalError("Cannot create new cell")}
             
-            cell.nameLabel.text = "\(movie?.title ?? "")"
-            cell.movieImageView.loadPoster(posterPath: movie?.posterPath)
+            if let movieData = movie {
+                cell.configure(movie: movieData)
+            }
             return cell
         }
     }
@@ -103,20 +106,13 @@ class MovieViewController: UIViewController {
     // fetch data from API
     private func fetchMovies() {
         networking.loadMovies { [weak self] (results) in
-            guard let movies = results
-                else {
-                    return
-            }
-            guard let self = self else {
-                return
-            }
+            guard let movies = results, let self = self
+                else { return }
+
             DispatchQueue.main.async {
                 self.movieArray.append(contentsOf: movies)
                 self.handle(self.movieArray)
             }
-            self.activityIndicator.isHidden = true
-            self.activityIndicator.stopAnimating()
-            
         }
     }
     
@@ -127,14 +123,15 @@ class MovieViewController: UIViewController {
         snapshot.appendSections([.main])
         snapshot.appendItems(movies)
         self.dataSource.apply(snapshot, animatingDifferences: true)
+        self.activityIndicator.isHidden = true
+        self.activityIndicator.stopAnimating()
         
     }
-
 
 }
 
 //MARK: - Banner CollectionView Data Source
-extension MovieViewController: UICollectionViewDataSource {
+extension FeedViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 5
     }
@@ -148,8 +145,8 @@ extension MovieViewController: UICollectionViewDataSource {
 }
 
 //MARK: - MovieCollectionView Delegate
-extension MovieViewController: UICollectionViewDelegate {
-    
+extension FeedViewController: UICollectionViewDelegate {
+
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if indexPath.item == movieArray.count - 5, networking.canLoadMore == true {
             self.fetchMovies()

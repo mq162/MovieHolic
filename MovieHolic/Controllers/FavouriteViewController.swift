@@ -13,15 +13,13 @@ class FavouriteViewController: UIViewController {
     private let service = Networking()
     private var movies: [Movie] = []
     
-    // MARK: - Subviews
-    
     @IBOutlet weak var tableView: UITableView!
-    
-    // MARK: - UIViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureView()
+        tableView.register(UINib(nibName: SearchTableViewCell.identifier, bundle: nil),forCellReuseIdentifier: SearchTableViewCell.identifier)
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -29,27 +27,18 @@ class FavouriteViewController: UIViewController {
         movies = service.getFavoriteMovies()
         tableView.reloadData()
     }
-    
-    // MARK: - Private Methods
-    
-    private func configureView() {
-        navigationController?.navigationBar.prefersLargeTitles = true
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(UINib(nibName: SearchTableViewCell.identifier, bundle: nil),
-                           forCellReuseIdentifier: SearchTableViewCell.identifier)
-        tableView.tableFooterView = UIView()
-    }
+        
 }
 
-    // MARK: - TableViewDelegate
+//MARK: - UITableView Delegate
 
 extension FavouriteViewController: UITableViewDelegate {
+    //navigation
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: K.segueIdentifier.favourite, sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
+    // prepare segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let detailVC = segue.destination as! MovieDetailViewController
         if let indexPath = tableView.indexPathForSelectedRow {
@@ -66,11 +55,12 @@ extension FavouriteViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier,for: indexPath) as? SearchTableViewCell
-        cell?.configure(movie: movies[indexPath.row])
-        return cell ?? UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier,for: indexPath) as? SearchTableViewCell else { fatalError("Cannot create new cell")}
+        cell.configure(movie: movies[indexPath.row])
+        return cell
     }
     
+    // delete cell behavior
     func tableView(_ tableView: UITableView,commit editingStyle: UITableViewCell.EditingStyle,forRowAt indexPath: IndexPath) {
         guard let movieId = movies[indexPath.row].id else {
             return

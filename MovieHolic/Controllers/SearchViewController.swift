@@ -13,7 +13,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
-    private var networking = Networking()
+    private lazy var networking = Networking()
     private var query = ""
     private var movies: [Movie] = []
     
@@ -64,9 +64,9 @@ class SearchViewController: UIViewController {
         }
     }
     
-
 }
 
+//MARK: - UITableView DatSource
 extension SearchViewController: UITableViewDataSource  {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -74,7 +74,7 @@ extension SearchViewController: UITableViewDataSource  {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier, for: indexPath) as! SearchTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier, for: indexPath) as? SearchTableViewCell else { fatalError("Cannot create new cell")}
         cell.configure(movie: movies[indexPath.row])
         cell.selectionStyle = .none
         return cell
@@ -82,6 +82,7 @@ extension SearchViewController: UITableViewDataSource  {
 
 }
 
+//MARK: - TableView Delegate
 extension SearchViewController: UITableViewDelegate {
    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -91,12 +92,12 @@ extension SearchViewController: UITableViewDelegate {
             }
            }
        }
-    
+   // navigation
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: K.segueIdentifier.search, sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
+    // prepare segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let detailVC = segue.destination as! MovieDetailViewController
         if let indexPath = tableView.indexPathForSelectedRow {
@@ -105,6 +106,7 @@ extension SearchViewController: UITableViewDelegate {
     }
     
 }
+//MARK: - Search Bar Methods
 
 extension SearchViewController: UISearchBarDelegate {
 
@@ -120,10 +122,8 @@ extension SearchViewController: UISearchBarDelegate {
             activityIndicator.isHidden = true
             activityIndicator.stopAnimating()
         } else {
-            DispatchQueue.main.async {
                 self.query = searchQuery
                 self.loadMovies(query: self.query)
-            }
         }
         
     }
@@ -134,12 +134,5 @@ extension SearchViewController: UISearchBarDelegate {
         activityIndicator.isHidden = true
         activityIndicator.stopAnimating()
     }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.showsCancelButton = false
-        searchBar.endEditing(true)
-        searchBar.resignFirstResponder()
-    }
-   
 
 }

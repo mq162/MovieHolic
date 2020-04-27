@@ -39,28 +39,12 @@ class MovieDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController!.navigationBar.shadowImage = UIImage()
-        self.navigationController!.navigationBar.isTranslucent = true
-
         loadDetails()
         configureView()
         checkFavorite()
-        
-        progressRing = UICircularProgressRing(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-        rateView.backgroundColor = #colorLiteral(red: 0.03137254902, green: 0.1098039216, blue: 0.1333333333, alpha: 1)
-        progressRing.style = .ontop
-        progressRing.maxValue = 100
-        progressRing.startAngle = 280
-        progressRing.outerRingWidth = 2
-        progressRing.fontColor = .white
-        rateView.makeCircular()
-        rateView.addSubview(progressRing)
     }
     
-    
-    
+    // progresRing animation
     override func viewDidAppear(_ animated: Bool) {
         if let vote = detailedMovie?.voteAverage {
             if vote >= 7.0 {
@@ -112,18 +96,29 @@ class MovieDetailViewController: UIViewController {
     }
     
     private func configureView() {
+        
         activityIndicator.startAnimating()
         hideMovieInformation(hidden: true)
+        
+        progressRing = UICircularProgressRing(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        rateView.backgroundColor = #colorLiteral(red: 0.03137254902, green: 0.1098039216, blue: 0.1333333333, alpha: 1)
+        progressRing.style = .ontop
+        progressRing.maxValue = 100
+        progressRing.startAngle = 280
+        progressRing.outerRingWidth = 2
+        progressRing.fontColor = .white
+        rateView.makeCircular()
+        rateView.addSubview(progressRing)
+        
         contentView.applyShadow(radius: 20, opacity: 0.1, offsetW: 4, offsetH: 4)
         contentView.layer.cornerRadius = 10
         contentView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        
         videosCollectionView.register(UINib(nibName: VideoCollectionViewCell.identifier, bundle: nil),forCellWithReuseIdentifier: VideoCollectionViewCell.identifier)
         videosCollectionView.delegate = self
         videosCollectionView.dataSource = self
-        
         castCollectionView.register(UINib(nibName: CastCollectionViewCell.identifier, bundle: nil),forCellWithReuseIdentifier: CastCollectionViewCell.identifier)
         castCollectionView.dataSource = self
-        
         
     }
     
@@ -145,8 +140,6 @@ class MovieDetailViewController: UIViewController {
         taglineLabel.text = detailedMovie?.tagline
         overviewLabel.text = detailedMovie?.overview
         releaseDateLabel.text = detailedMovie?.releaseDate?.formatDate()
-        
-        
         
         if detailedMovie?.budget == 0 {
             budgetLabel.text = "Information is coming soon"
@@ -182,6 +175,8 @@ class MovieDetailViewController: UIViewController {
         languageLabel.isHidden = isHidden
         rateView.isHidden = isHidden
     }
+    
+    //MARK: - Data Persistence
 
     @IBAction func favouriteButtonPressed(_ sender: UIBarButtonItem) {
         if isFavorite {
@@ -224,20 +219,21 @@ extension MovieDetailViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == videosCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VideoCollectionViewCell.identifier,
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VideoCollectionViewCell.identifier,
                                                           for: indexPath) as? VideoCollectionViewCell
-            cell?.configure(video: videos[indexPath.row])
-            return cell ?? UICollectionViewCell()
+            else { fatalError("Cannot create new cell")}
+            cell.configure(video: videos[indexPath.row])
+            return cell
         } else if collectionView == castCollectionView {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CastCollectionViewCell.identifier,
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CastCollectionViewCell.identifier,
                                                           for: indexPath) as? CastCollectionViewCell
-            cell?.configureCast(castEntry: cast[indexPath.row])
-            return cell ?? UICollectionViewCell()
+            else { fatalError("Cannot create new cell")}
+            cell.configureCast(castEntry: cast[indexPath.row])
+            return cell
         }else {
             return UICollectionViewCell()
         }
     }
-    
     
 }
 

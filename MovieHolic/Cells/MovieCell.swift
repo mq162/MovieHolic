@@ -26,6 +26,10 @@ class MovieCell: UICollectionViewCell {
         shadowView.layer.cornerRadius = 5
         shadowView.applyShadow(radius: 5, opacity: 0.07, offsetW: 0, offsetH: 0)
     }
-
+    
+    func configure(movie: Movie) {
+        nameLabel.text = "\(movie.title ?? "")"
+        movieImageView.loadPoster(posterPath: movie.posterPath)
+    }
 
 }

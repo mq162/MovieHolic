@@ -18,7 +18,7 @@ struct K {
     }
     
     struct segueIdentifier {
-        static let feed = "moviesToDetail"
+        static let feed = "feedToDetail"
         static let search = "searchToDetail"
         static let favourite = "favouriteToDetail"
     }
