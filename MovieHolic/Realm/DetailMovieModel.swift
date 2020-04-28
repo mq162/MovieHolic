@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 
 class DetailedMovieObject: Object {
+    
     let voteAverage = RealmOptional<Double>()
     @objc dynamic var releaseDate: String?
     @objc dynamic var overview: String?

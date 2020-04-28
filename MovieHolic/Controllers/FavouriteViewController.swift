@@ -10,7 +10,7 @@ import UIKit
 
 class FavouriteViewController: UIViewController {
     
-    private let service = Networking()
+    private let service = MoviesStorageService()
     private var movies: [Movie] = []
     
     @IBOutlet weak var tableView: UITableView!
@@ -66,8 +66,8 @@ extension FavouriteViewController: UITableViewDataSource {
             return
         }
         if editingStyle == .delete {
-            service.removeMovie(id: movieId)
-            service.removeDetailedMovie(id: movieId)
+            service.removeMovieWithId(id: movieId)
+            service.removeDetailedMovieWithId(id: movieId)
         }
         movies = service.getFavoriteMovies()
         tableView.reloadData()

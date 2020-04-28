@@ -11,11 +11,7 @@ import RealmSwift
 
 class StorageService {
 
-    // MARK: - Properties
-
     private let realm = try? Realm()
-
-    // MARK: - Methods
 
     func saveObject<T: Object>(object: T?) {
         try? realm?.write {
@@ -44,11 +40,9 @@ class StorageService {
         guard let id = id else {
             return
         }
-        // swiftlint:disable first_where
         guard let foundObject = realm?.objects(object.self).filter("id == \(id)").first else {
             return
         }
-        // swiftlint:enable first_where
         try? realm?.write {
             realm?.delete(foundObject)
         }

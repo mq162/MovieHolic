@@ -10,7 +10,6 @@ import Foundation
 
 class Networking {
     
-    private let storageMoviesService = MoviesStorageService()
     private var totalPages: Int = 1
     private var currentPage: Int = 1
     private var query: String?
@@ -20,7 +19,7 @@ class Networking {
             currentPage = 1
         }
     }
-
+    
     func loadMovies(completion: @escaping ([Movie]?) -> Void) {
         
         var url: URL?
@@ -34,13 +33,13 @@ class Networking {
         case .nowPlaying:
             url = URL(string: K.baseUrl + "movie/now_playing")
         case .search(let query):
-           url = URL(string: K.baseUrl + "search/movie")
+            url = URL(string: K.baseUrl + "search/movie")
             url = url?.appending("query", value: query)
         }
         
         url = url?.appending("api_key", value: K.apiKey)
         url = url?.appending("page", value: String(currentPage))
-
+        
         guard let urlNotNil = url else {
             return
         }
@@ -50,31 +49,31 @@ class Networking {
         
         let session = URLSession(configuration: .default)
         session.dataTask(with: urlNotNil) { (data, response, error) in
-                let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
-                guard let data = data else {
-                    return completion(nil)
-                }
-                do {
-                    let result = try decoder.decode(MoviesListResponse.self, from: data)
-                    DispatchQueue.main.async {
-                        guard let totalPages = result.totalPages else {
-                            return
-                        }
-                        self.totalPages = totalPages
-                        if self.currentPage < totalPages {
-                            self.canLoadMore = true
-                        } else {
-                            self.canLoadMore = false
-                        }
-                        self.currentPage += 1
-                        completion(result.results)
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            guard let data = data else {
+                return completion(nil)
+            }
+            do {
+                let result = try decoder.decode(MoviesListResponse.self, from: data)
+                DispatchQueue.main.async {
+                    guard let totalPages = result.totalPages else {
+                        return
                     }
-                } catch {
-                    completion(nil)
+                    self.totalPages = totalPages
+                    if self.currentPage < totalPages {
+                        self.canLoadMore = true
+                    } else {
+                        self.canLoadMore = false
+                    }
+                    self.currentPage += 1
+                    completion(result.results)
                 }
-            }.resume()
-        }
+            } catch {
+                completion(nil)
+            }
+        }.resume()
+    }
     
     func loadDetails(movieId: Int, completion: @escaping (DetailedMovie?) -> Void) {
         var url: URL?
@@ -128,8 +127,8 @@ class Networking {
         guard
             let url = URL(string: K.baseUrl + "movie/\(movieId)/credits")?
                 .appending("api_key", value: K.apiKey)
-        else {
-            return
+            else {
+                return
         }
         URLSession.shared.dataTask(with: url) { (data, response, error) in
             let decoder = JSONDecoder()
@@ -148,33 +147,6 @@ class Networking {
         }.resume()
     }
     
-    func saveMovie(detailedMovie: DetailedMovie?) {
-        storageMoviesService.saveMovie(detailedMovie: detailedMovie)
-    }
-
-    func saveDetailedMovie(detailedMovie: DetailedMovie?) {
-        storageMoviesService.saveDetailedMovie(detailedMovie: detailedMovie)
-    }
-
-    func isListedMovie(id: Int?) -> Bool {
-        return storageMoviesService.isListedMovie(id: id)
-    }
-
-    func removeMovie(id: Int?) {
-        storageMoviesService.removeMovieWithId(id: id)
-    }
-
-    func removeDetailedMovie(id: Int?) {
-        storageMoviesService.removeDetailedMovieWithId(id: id)
-    }
-
-    func getFavoriteMovies() -> [Movie] {
-        storageMoviesService.getFavoriteMovies()
-    }
-
-    func getMovieInfo(id: Int?) -> DetailedMovie? {
-        storageMoviesService.getMovieInfo(id: id)
-    }
     
 }
 

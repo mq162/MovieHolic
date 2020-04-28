@@ -23,13 +23,13 @@ struct Movie: Codable, Identifiable, Hashable {
     
     let identifier = UUID()
     
-    //let backdropPath: String?
+    let backdropPath: String?
     let posterPath: String?
     let id: Int?
     let title: String?
-    //let voteAverage: Double?
-   // let overview: String?
-   // let releaseDate: String?
+    let voteAverage: Double?
+    let overview: String?
+    let releaseDate: String?
 }
 
 
