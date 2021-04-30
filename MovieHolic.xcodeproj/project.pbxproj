@@ -41,6 +41,7 @@
 		18EDFEE72452D3C4000683C7 /* CastCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18EDFEE52452D3C4000683C7 /* CastCollectionViewCell.xib */; };
 		18EE08592434C65E008007AA /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EE08582434C65E008007AA /* Extension.swift */; };
 		65325BB4B028B62E2FC396DE /* Pods_MovieHolic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D05CB529DFAB50E37F373D5 /* Pods_MovieHolic.framework */; };
+		79924551263BDF1F00F4CC9C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79924550263BDF1F00F4CC9C /* Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,7 +57,6 @@
 		18262D4A2432E68E0027C31D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		18262D4C2432E68F0027C31D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18262D4F2432E68F0027C31D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		18262D512432E68F0027C31D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		18262D572432EE9C0027C31D /* BannerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCell.swift; sourceTree = "<group>"; };
 		18262D582432EE9C0027C31D /* BannerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BannerCell.xib; sourceTree = "<group>"; };
 		18262D5B2432EEB30027C31D /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
@@ -80,6 +80,7 @@
 		18EDFEE52452D3C4000683C7 /* CastCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CastCollectionViewCell.xib; sourceTree = "<group>"; };
 		18EE08582434C65E008007AA /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		1D05CB529DFAB50E37F373D5 /* Pods_MovieHolic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieHolic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		79924550263BDF1F00F4CC9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = MovieHolic/Info.plist; sourceTree = SOURCE_ROOT; };
 		A434C5FDFC733EB1E8005C18 /* Pods-MovieHolic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieHolic.debug.xcconfig"; path = "Target Support Files/Pods-MovieHolic/Pods-MovieHolic.debug.xcconfig"; sourceTree = "<group>"; };
 		DC01966EEABF41882A8B743E /* Pods-MovieHolic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieHolic.release.xcconfig"; path = "Target Support Files/Pods-MovieHolic/Pods-MovieHolic.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,7 +120,6 @@
 			isa = PBXGroup;
 			children = (
 				18262D422432E68E0027C31D /* MovieHolic */,
-				18262D512432E68F0027C31D /* Info.plist */,
 				18262D412432E68E0027C31D /* Products */,
 				7BCD697CF8EA72106FB23D7B /* Pods */,
 				96674713BCA43A0BAA09D9E5 /* Frameworks */,
@@ -212,6 +212,7 @@
 			children = (
 				18262D4E2432E68F0027C31D /* LaunchScreen.storyboard */,
 				18262D4C2432E68F0027C31D /* Assets.xcassets */,
+				79924550263BDF1F00F4CC9C /* Info.plist */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -306,6 +307,7 @@
 			files = (
 				18262D502432E68F0027C31D /* LaunchScreen.storyboard in Resources */,
 				18262D5A2432EE9C0027C31D /* BannerCell.xib in Resources */,
+				79924551263BDF1F00F4CC9C /* Info.plist in Resources */,
 				18100B1E2451D3E800776781 /* VideoCollectionViewCell.xib in Resources */,
 				18262D4D2432E68F0027C31D /* Assets.xcassets in Resources */,
 				18EDFEE72452D3C4000683C7 /* CastCollectionViewCell.xib in Resources */,

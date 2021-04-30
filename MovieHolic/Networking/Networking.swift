@@ -10,6 +10,7 @@ import Foundation
 
 class Networking {
     
+    private let storageMoviesService = MoviesStorageService()
     private var totalPages: Int = 1
     private var currentPage: Int = 1
     private var query: String?
@@ -145,6 +146,34 @@ class Networking {
                 completion(nil)
             }
         }.resume()
+    }
+    
+    func saveMovie(detailedMovie: DetailedMovie?) {
+        storageMoviesService.saveMovie(detailedMovie: detailedMovie)
+    }
+
+    func saveDetailedMovie(detailedMovie: DetailedMovie?) {
+        storageMoviesService.saveDetailedMovie(detailedMovie: detailedMovie)
+    }
+
+    func isListedMovie(id: Int?) -> Bool {
+        return storageMoviesService.isListedMovie(id: id)
+    }
+
+    func removeMovie(id: Int?) {
+        storageMoviesService.removeMovieWithId(id: id)
+    }
+
+    func removeDetailedMovie(id: Int?) {
+        storageMoviesService.removeDetailedMovieWithId(id: id)
+    }
+
+    func getFavoriteMovies() -> [Movie] {
+        storageMoviesService.getFavoriteMovies()
+    }
+
+    func getMovieInfo(id: Int?) -> DetailedMovie? {
+        storageMoviesService.getMovieInfo(id: id)
     }
     
     

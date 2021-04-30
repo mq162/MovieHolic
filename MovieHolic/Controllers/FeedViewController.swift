@@ -10,10 +10,10 @@ import UIKit
 
 class FeedViewController: UIViewController {
 
-    @IBOutlet weak var moviePreferences: UISegmentedControl!
-    @IBOutlet weak var movieCollectionView: UICollectionView!
-    @IBOutlet weak var bannerCollectionView: UICollectionView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var moviePreferences: UISegmentedControl!
+    @IBOutlet private weak var movieCollectionView: UICollectionView!
+    @IBOutlet private weak var bannerCollectionView: UICollectionView!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
     private lazy var networking = Networking()
     private var movieArray: [Movie] = []
@@ -57,7 +57,7 @@ class FeedViewController: UIViewController {
     func segmentBehavior() {
         self.activityIndicator.isHidden = false
         self.activityIndicator.startAnimating()
-        movieArray = []
+        movieArray.removeAll()
         fetchMovies()
         movieCollectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
     }
@@ -83,7 +83,6 @@ class FeedViewController: UIViewController {
     }
 
     private func startTimer() {
-        
         self.timer = Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(scrollToNextCell), userInfo: nil, repeats: true)
     }
     
@@ -156,7 +155,6 @@ extension FeedViewController: UICollectionViewDelegate {
     //Navigation
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         performSegue(withIdentifier: K.segueIdentifier.feed, sender: self)
-        
     }
     
     // Prepare Segue
@@ -168,5 +166,3 @@ extension FeedViewController: UICollectionViewDelegate {
         }
     }
 }
-
-

@@ -13,7 +13,7 @@ class FavouriteViewController: UIViewController {
     private let service = MoviesStorageService()
     private var movies: [Movie] = []
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

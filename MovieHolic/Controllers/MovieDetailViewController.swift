@@ -12,21 +12,21 @@ import AVKit
 
 class MovieDetailViewController: UIViewController {
     
-    @IBOutlet weak var backdropImage: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var taglineLabel: UILabel!
-    @IBOutlet weak var overviewLabel: UILabel!
-    @IBOutlet weak var rateView: UIView!
-    @IBOutlet weak var contentView: UIView!
-    @IBOutlet weak var releaseDateLabel: UILabel!
-    @IBOutlet weak var runtimeLabel: UILabel!
-    @IBOutlet weak var budgetLabel: UILabel!
-    @IBOutlet weak var revenueLabel: UILabel!
-    @IBOutlet weak var languageLabel: UILabel!
-    @IBOutlet weak var videosCollectionView: UICollectionView!
-    @IBOutlet weak var castCollectionView: UICollectionView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    @IBOutlet weak var favouriteItem: UIBarButtonItem!
+    @IBOutlet private weak var backdropImage: UIImageView!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var taglineLabel: UILabel!
+    @IBOutlet private weak var overviewLabel: UILabel!
+    @IBOutlet private weak var rateView: UIView!
+    @IBOutlet private weak var contentView: UIView!
+    @IBOutlet private weak var releaseDateLabel: UILabel!
+    @IBOutlet private weak var runtimeLabel: UILabel!
+    @IBOutlet private weak var budgetLabel: UILabel!
+    @IBOutlet private weak var revenueLabel: UILabel!
+    @IBOutlet private weak var languageLabel: UILabel!
+    @IBOutlet private weak var videosCollectionView: UICollectionView!
+    @IBOutlet private weak var castCollectionView: UICollectionView!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var favouriteItem: UIBarButtonItem!
     
     private var progressRing: UICircularProgressRing!
     var movieId: Int?
@@ -83,9 +83,7 @@ class MovieDetailViewController: UIViewController {
         }
         
         networking.loadCast(movieId: movieId) { [weak self] (resultCast) in
-            guard
-                let self = self, let resultCast = resultCast
-            else {
+            guard let self = self, let resultCast = resultCast else {
                 return
             }
             self.cast = resultCast
@@ -141,15 +139,11 @@ class MovieDetailViewController: UIViewController {
         overviewLabel.text = detailedMovie?.overview
         releaseDateLabel.text = detailedMovie?.releaseDate?.formatDate()
         
-        if detailedMovie?.budget == 0 {
-            budgetLabel.text = "Information is coming soon"
-        } else if let budget = detailedMovie?.budget {
-            self.budgetLabel.text = "\(budget.numFormat())$"
+        if let budget = detailedMovie?.budget {
+            budgetLabel.text = budget != 0 ? "\(budget.numFormat())$" : "Information is coming soon"
         }
-        if detailedMovie?.revenue == 0 {
-            revenueLabel.text = "Information is coming soon"
-        } else if let revenue = detailedMovie?.revenue {
-            self.revenueLabel.text = "\(revenue.numFormat())$"
+        if let revenue = detailedMovie?.revenue {
+            self.revenueLabel.text = revenue != 0 ? "\(revenue.numFormat())$" : "Information is coming soon"
         }
         if detailedMovie?.runtime == 0 {
             runtimeLabel.text = "Information is coming soon"
@@ -194,13 +188,8 @@ class MovieDetailViewController: UIViewController {
     }
     
     private func checkFavorite() {
-        if networking.isListedMovie(id: movieId) {
-            isFavorite = true
-            favouriteItem.image = UIImage(systemName: "star.fill")
-        } else {
-            isFavorite = false
-            favouriteItem.image = UIImage(systemName: "star")
-        }
+        isFavorite = networking.isListedMovie(id: movieId)
+        favouriteItem.image = UIImage(systemName: networking.isListedMovie(id: movieId) ? "star.fill" : "star")
     }
 }
 

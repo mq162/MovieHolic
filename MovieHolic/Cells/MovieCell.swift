@@ -31,5 +31,4 @@ class MovieCell: UICollectionViewCell {
         nameLabel.text = "\(movie.title ?? "")"
         movieImageView.loadPoster(posterPath: movie.posterPath)
     }
-
 }

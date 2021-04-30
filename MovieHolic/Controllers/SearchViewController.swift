@@ -10,8 +10,8 @@ import UIKit
 
 class SearchViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
     private lazy var networking = Networking()
     private var query = ""
@@ -39,8 +39,8 @@ class SearchViewController: UIViewController {
                 return
             }
             DispatchQueue.main.async {
-            self.movies.append(contentsOf: movies)
-            self.tableView.reloadData()
+                self.movies.append(contentsOf: movies)
+                self.tableView.reloadData()
             }
         }
     }
@@ -48,22 +48,17 @@ class SearchViewController: UIViewController {
     private func loadMovies(query: String) {
         networking.strategy = .search(query: query)
         networking.loadMovies { [weak self] (results) in
-            guard
-                let movies = results,
-                let self = self
-            else {
+            guard let movies = results, let self = self else {
                 return
             }
             DispatchQueue.main.async {
                 self.movies = movies
                 self.tableView.reloadData()
             }
-            
             self.activityIndicator.stopAnimating()
             self.activityIndicator.isHidden = true
         }
     }
-    
 }
 
 //MARK: - UITableView DatSource
@@ -109,7 +104,7 @@ extension SearchViewController: UITableViewDelegate {
 //MARK: - Search Bar Methods
 
 extension SearchViewController: UISearchBarDelegate {
-
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.activityIndicator.startAnimating()
         self.activityIndicator.isHidden = false
@@ -117,22 +112,20 @@ extension SearchViewController: UISearchBarDelegate {
             return
         }
         if searchQuery == "" {
-            movies = []
+            movies.removeAll()
             tableView.reloadData()
             activityIndicator.isHidden = true
             activityIndicator.stopAnimating()
         } else {
-                self.query = searchQuery
-                self.loadMovies(query: self.query)
+            self.query = searchQuery
+            self.loadMovies(query: self.query)
         }
-        
     }
-
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        movies = []
+        movies.removeAll()
         tableView.reloadData()
         activityIndicator.isHidden = true
         activityIndicator.stopAnimating()
     }
-
 }
