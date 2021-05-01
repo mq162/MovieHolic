@@ -1,0 +1,24 @@
+PODS:
+  - Alamofire (4.9.1)
+  - Nuke (9.5.0)
+  - UICircularProgressRing (8.0.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.8)
+  - Nuke
+  - UICircularProgressRing
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - Nuke
+    - UICircularProgressRing
+
+SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  Nuke: 6f400a4ea957e09149ec335a3c6acdcc814d89e4
+  UICircularProgressRing: 19927375b2b21b5fa5fd9582f15ccdef9659da16
+
+PODFILE CHECKSUM: 67c390a9c0de02dc407f90100d903041b441f4c4
+
+COCOAPODS: 1.10.1

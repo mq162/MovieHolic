@@ -1,0 +1,6 @@
+framework module Pods_MovieHolic_Networking {
+  umbrella header "Pods-MovieHolic-Networking-umbrella.h"
+
+  export *
+  module * { export * }
+}

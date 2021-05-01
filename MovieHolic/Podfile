@@ -1,0 +1,31 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+workspace 'MovieHolic.xcworkspace'
+
+use_frameworks!
+
+target 'MovieHolic' do
+  # Comment the next line if you don't want to use dynamic frameworks
+
+  # Pods for MovieHolic
+  pod 'Alamofire', '~> 4.8'
+  pod 'Nuke'
+  pod 'UICircularProgressRing'
+
+# Networking Layer:
+# =================
+#
+def networking_pods
+  pod 'Alamofire', '~> 4.8'
+end
+
+# Networking Target:
+# ==================
+#
+target 'Networking' do
+  project '../Networking/Networking.xcodeproj'
+  networking_pods
+end
+  
+
+end
