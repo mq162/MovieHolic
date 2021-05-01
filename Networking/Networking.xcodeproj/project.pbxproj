@@ -10,6 +10,11 @@
 		79DC46D6263D8A490061A2CB /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79DC46CC263D8A480061A2CB /* Networking.framework */; };
 		79DC46DB263D8A490061A2CB /* NetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DC46DA263D8A490061A2CB /* NetworkingTests.swift */; };
 		79DC46DD263D8A490061A2CB /* Networking.h in Headers */ = {isa = PBXBuildFile; fileRef = 79DC46CF263D8A480061A2CB /* Networking.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		79DC4706263D96140061A2CB /* AnyCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DC4705263D96140061A2CB /* AnyCodable.swift */; };
+		79DC470A263D96620061A2CB /* AnyDecodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DC4709263D96620061A2CB /* AnyDecodable.swift */; };
+		79DC470E263D96940061A2CB /* AnyEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DC470D263D96940061A2CB /* AnyEncodable.swift */; };
+		79DC4713263D987B0061A2CB /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DC4712263D987B0061A2CB /* Settings.swift */; };
+		79DC4717263D9B450061A2CB /* APIVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79DC4716263D9B450061A2CB /* APIVersion.swift */; };
 		7FD3B1E96BF91A6B3392DCAC /* Pods_MovieHolic_Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 830D65DFE438728114C79F0D /* Pods_MovieHolic_Networking.framework */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +36,11 @@
 		79DC46D5263D8A490061A2CB /* NetworkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		79DC46DA263D8A490061A2CB /* NetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingTests.swift; sourceTree = "<group>"; };
 		79DC46DC263D8A490061A2CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		79DC4705263D96140061A2CB /* AnyCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyCodable.swift; sourceTree = "<group>"; };
+		79DC4709263D96620061A2CB /* AnyDecodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyDecodable.swift; sourceTree = "<group>"; };
+		79DC470D263D96940061A2CB /* AnyEncodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyEncodable.swift; sourceTree = "<group>"; };
+		79DC4712263D987B0061A2CB /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		79DC4716263D9B450061A2CB /* APIVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIVersion.swift; sourceTree = "<group>"; };
 		830D65DFE438728114C79F0D /* Pods_MovieHolic_Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieHolic_Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A038F86A58EE9B0158954DCF /* Pods-MovieHolic-Networking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieHolic-Networking.release.xcconfig"; path = "Target Support Files/Pods-MovieHolic-Networking/Pods-MovieHolic-Networking.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,6 +106,14 @@
 		79DC46CE263D8A480061A2CB /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				79DC471F263D9C3D0061A2CB /* Extensions */,
+				79DC471E263D9C2C0061A2CB /* Mapper */,
+				79DC471D263D9C1E0061A2CB /* Model */,
+				79DC471C263D9C0A0061A2CB /* Network */,
+				79DC471B263D9BEE0061A2CB /* Requests */,
+				79DC471A263D9BD00061A2CB /* Remote */,
+				79DC4711263D984D0061A2CB /* Settings */,
+				79DC4704263D95F00061A2CB /* Tools */,
 				79DC46CF263D8A480061A2CB /* Networking.h */,
 				79DC46D0263D8A480061A2CB /* Info.plist */,
 			);
@@ -109,6 +127,67 @@
 				79DC46DC263D8A490061A2CB /* Info.plist */,
 			);
 			path = NetworkingTests;
+			sourceTree = "<group>";
+		};
+		79DC4704263D95F00061A2CB /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				79DC4705263D96140061A2CB /* AnyCodable.swift */,
+				79DC4709263D96620061A2CB /* AnyDecodable.swift */,
+				79DC470D263D96940061A2CB /* AnyEncodable.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		79DC4711263D984D0061A2CB /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				79DC4712263D987B0061A2CB /* Settings.swift */,
+				79DC4716263D9B450061A2CB /* APIVersion.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		79DC471A263D9BD00061A2CB /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		79DC471B263D9BEE0061A2CB /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		79DC471C263D9C0A0061A2CB /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		79DC471D263D9C1E0061A2CB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		79DC471E263D9C2C0061A2CB /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Mapper;
+			sourceTree = "<group>";
+		};
+		79DC471F263D9C3D0061A2CB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,6 +252,7 @@
 				TargetAttributes = {
 					79DC46CB263D8A480061A2CB = {
 						CreatedOnToolsVersion = 12.4;
+						LastSwiftMigration = 1240;
 					};
 					79DC46D4263D8A490061A2CB = {
 						CreatedOnToolsVersion = 12.4;
@@ -245,6 +325,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79DC470A263D96620061A2CB /* AnyDecodable.swift in Sources */,
+				79DC470E263D96940061A2CB /* AnyEncodable.swift in Sources */,
+				79DC4713263D987B0061A2CB /* Settings.swift in Sources */,
+				79DC4717263D9B450061A2CB /* APIVersion.swift in Sources */,
+				79DC4706263D96140061A2CB /* AnyCodable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,6 +478,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3FCEE6A079E7BCC9980774AE /* Pods-MovieHolic-Networking.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = M273226BD7;
@@ -410,6 +496,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.pmquang.networking.Networking;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -419,6 +506,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A038F86A58EE9B0158954DCF /* Pods-MovieHolic-Networking.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = M273226BD7;
@@ -444,6 +532,7 @@
 		79DC46E4263D8A490061A2CB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M273226BD7;
 				INFOPLIST_FILE = NetworkingTests/Info.plist;
@@ -462,6 +551,7 @@
 		79DC46E5263D8A490061A2CB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M273226BD7;
 				INFOPLIST_FILE = NetworkingTests/Info.plist;
