@@ -21,7 +21,7 @@ struct MoviesListResponse: Codable {
 
 struct Movie: Codable, Identifiable, Hashable {
     
-    let identifier = UUID()
+    var identifier = UUID()
     
     let backdropPath: String?
     let posterPath: String?

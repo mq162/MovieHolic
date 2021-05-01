@@ -7,9 +7,9 @@ target 'MovieHolic' do
 
   # Pods for MovieHolic
 
-pod 'Nuke'
-pod 'UICircularProgressRing'
-pod 'YoutubeDirectLinkExtractor'
-pod 'RealmSwift'
+pod 'Nuke', '~> 9.5.0'
+pod 'UICircularProgressRing', '~> 7.0.0'
+pod 'RealmSwift', '~> 10.7.3'
+pod 'RIBs', '~> 0.9.1'
 
 end

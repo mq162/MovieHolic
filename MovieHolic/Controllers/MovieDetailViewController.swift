@@ -232,19 +232,19 @@ extension MovieDetailViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-            if collectionView == videosCollectionView {
-                extractor.getUrlFromKey(key: videos[indexPath.row].key) { [weak self] (url) in
-                    guard let self = self else {
-                        return
-                    }
-                    let player = AVPlayer(url: url)
-                    let vc = AVPlayerViewController()
-                    vc.player = player
-                    self.present(vc, animated: true) {
-                        vc.player?.play()
-                    }
-                }
-            }
+//            if collectionView == videosCollectionView {
+//                extractor.getUrlFromKey(key: videos[indexPath.row].key) { [weak self] (url) in
+//                    guard let self = self else {
+//                        return
+//                    }
+//                    let player = AVPlayer(url: url)
+//                    let vc = AVPlayerViewController()
+//                    vc.player = player
+//                    self.present(vc, animated: true) {
+//                        vc.player?.play()
+//                    }
+//                }
+//            }
         }
 }
 

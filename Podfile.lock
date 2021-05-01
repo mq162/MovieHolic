@@ -1,34 +1,38 @@
 PODS:
-  - Nuke (8.4.1)
-  - Realm (4.4.0):
-    - Realm/Headers (= 4.4.0)
-  - Realm/Headers (4.4.0)
-  - RealmSwift (4.4.0):
-    - Realm (= 4.4.0)
-  - UICircularProgressRing (6.5.0)
-  - YoutubeDirectLinkExtractor (0.3.1)
+  - Nuke (9.5.0)
+  - Realm (10.7.3):
+    - Realm/Headers (= 10.7.3)
+  - Realm/Headers (10.7.3)
+  - RealmSwift (10.7.3):
+    - Realm (= 10.7.3)
+  - RIBs (0.9.1):
+    - RxSwift (~> 4.0)
+  - RxSwift (4.5.0)
+  - UICircularProgressRing (7.0.0)
 
 DEPENDENCIES:
-  - Nuke
-  - RealmSwift
-  - UICircularProgressRing
-  - YoutubeDirectLinkExtractor
+  - Nuke (~> 9.5.0)
+  - RealmSwift (~> 10.7.3)
+  - RIBs (~> 0.9.1)
+  - UICircularProgressRing (~> 7.0.0)
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - Nuke
     - Realm
     - RealmSwift
+    - RIBs
+    - RxSwift
     - UICircularProgressRing
-    - YoutubeDirectLinkExtractor
 
 SPEC CHECKSUMS:
-  Nuke: d780e3507a86b86c589ab3cc5cd302d5456f06fb
-  Realm: e125f464884cda953ebefe70c671b75b03b81b9b
-  RealmSwift: 33656a42bd300959a081fc13347376bc478071af
-  UICircularProgressRing: e6852e8f88e296cbbbe2720cccb55241acda6708
-  YoutubeDirectLinkExtractor: de7abd36c0e3bb120b9b372f36450fbf9b51c01e
+  Nuke: 6f400a4ea957e09149ec335a3c6acdcc814d89e4
+  Realm: 472ea9ad72cee02df140dfd2926f482df6addbd2
+  RealmSwift: 7462f44bc04b61505ef70e4863ee7ce48fa12ede
+  RIBs: 879184fbca567425c488d6b3d14a9c5abfbf9d47
+  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
+  UICircularProgressRing: 738b48db0ec1fbbd8482d727979392bb8c272e8d
 
-PODFILE CHECKSUM: 4e2f28dcae76b8bac057738588279dfdae447ec6
+PODFILE CHECKSUM: 8442864a001f874ec7ad98be9da41ee96d199e0d
 
-COCOAPODS: 1.7.5
+COCOAPODS: 1.10.1
