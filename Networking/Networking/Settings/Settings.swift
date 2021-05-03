@@ -9,8 +9,10 @@
 ///
 public struct Settings {
     
-    /// TheMovieDb API Base URL
-    ///
     public static let baseURL = "https://api.themoviedb.org/"
+    
+    public static let basePosterURL = "https://image.tmdb.org/t/p/w500/"
+    
+    public static let baseBackdropURL = "https://image.tmdb.org/t/p/original/"
 }
 

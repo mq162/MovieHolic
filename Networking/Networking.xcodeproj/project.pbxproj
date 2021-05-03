@@ -24,6 +24,14 @@
 		79F5C32E263E6C0C006E14D0 /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F5C32D263E6C0C006E14D0 /* Credits.swift */; };
 		79F5C334263E78AD006E14D0 /* MovieList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F5C333263E78AD006E14D0 /* MovieList.swift */; };
 		79F5C338263E7A72006E14D0 /* MovieListMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F5C337263E7A72006E14D0 /* MovieListMapper.swift */; };
+		79F5C341263E7BCB006E14D0 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F5C340263E7BCB006E14D0 /* NetworkError.swift */; };
+		79F5C347263E7DA7006E14D0 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F5C346263E7DA7006E14D0 /* Network.swift */; };
+		79F5C34B263E7DB9006E14D0 /* AlamofireNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F5C34A263E7DB9006E14D0 /* AlamofireNetwork.swift */; };
+		79F5C363263E8808006E14D0 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F5C362263E8808006E14D0 /* APIRequest.swift */; };
+		79F5C367263E8D6A006E14D0 /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F5C366263E8D6A006E14D0 /* Credentials.swift */; };
+		79F5C36B263E8F03006E14D0 /* AuthenticatedRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F5C36A263E8F03006E14D0 /* AuthenticatedRequest.swift */; };
+		79F5C38F263E94F2006E14D0 /* URL+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F5C38E263E94F2006E14D0 /* URL+Extension.swift */; };
+		79F5C395263E9898006E14D0 /* Remote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79F5C394263E9898006E14D0 /* Remote.swift */; };
 		7FD3B1E96BF91A6B3392DCAC /* Pods_MovieHolic_Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 830D65DFE438728114C79F0D /* Pods_MovieHolic_Networking.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +67,14 @@
 		79F5C32D263E6C0C006E14D0 /* Credits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credits.swift; sourceTree = "<group>"; };
 		79F5C333263E78AD006E14D0 /* MovieList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieList.swift; sourceTree = "<group>"; };
 		79F5C337263E7A72006E14D0 /* MovieListMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListMapper.swift; sourceTree = "<group>"; };
+		79F5C340263E7BCB006E14D0 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		79F5C346263E7DA7006E14D0 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		79F5C34A263E7DB9006E14D0 /* AlamofireNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireNetwork.swift; sourceTree = "<group>"; };
+		79F5C362263E8808006E14D0 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		79F5C366263E8D6A006E14D0 /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		79F5C36A263E8F03006E14D0 /* AuthenticatedRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedRequest.swift; sourceTree = "<group>"; };
+		79F5C38E263E94F2006E14D0 /* URL+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Extension.swift"; sourceTree = "<group>"; };
+		79F5C394263E9898006E14D0 /* Remote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Remote.swift; sourceTree = "<group>"; };
 		830D65DFE438728114C79F0D /* Pods_MovieHolic_Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieHolic_Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A038F86A58EE9B0158954DCF /* Pods-MovieHolic-Networking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieHolic-Networking.release.xcconfig"; path = "Target Support Files/Pods-MovieHolic-Networking/Pods-MovieHolic-Networking.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -125,7 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				79DC471F263D9C3D0061A2CB /* Extensions */,
-				79DC471E263D9C2C0061A2CB /* Mapper */,
+				79F5C33D263E7B47006E14D0 /* Mapper */,
 				79DC471D263D9C1E0061A2CB /* Model */,
 				79DC471C263D9C0A0061A2CB /* Network */,
 				79DC471B263D9BEE0061A2CB /* Requests */,
@@ -162,6 +178,7 @@
 			children = (
 				79DC4712263D987B0061A2CB /* Settings.swift */,
 				79DC4716263D9B450061A2CB /* APIVersion.swift */,
+				79F5C366263E8D6A006E14D0 /* Credentials.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -169,6 +186,7 @@
 		79DC471A263D9BD00061A2CB /* Remote */ = {
 			isa = PBXGroup;
 			children = (
+				79F5C394263E9898006E14D0 /* Remote.swift */,
 			);
 			path = Remote;
 			sourceTree = "<group>";
@@ -176,6 +194,8 @@
 		79DC471B263D9BEE0061A2CB /* Requests */ = {
 			isa = PBXGroup;
 			children = (
+				79F5C36A263E8F03006E14D0 /* AuthenticatedRequest.swift */,
+				79F5C362263E8808006E14D0 /* APIRequest.swift */,
 			);
 			path = Requests;
 			sourceTree = "<group>";
@@ -183,6 +203,9 @@
 		79DC471C263D9C0A0061A2CB /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				79F5C340263E7BCB006E14D0 /* NetworkError.swift */,
+				79F5C346263E7DA7006E14D0 /* Network.swift */,
+				79F5C34A263E7DB9006E14D0 /* AlamofireNetwork.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -196,19 +219,10 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		79DC471E263D9C2C0061A2CB /* Mapper */ = {
-			isa = PBXGroup;
-			children = (
-				79F5C30A263E59D0006E14D0 /* Mapper.swift */,
-				79F5C328263E6B45006E14D0 /* CreditsMapper.swift */,
-				79F5C337263E7A72006E14D0 /* MovieListMapper.swift */,
-			);
-			name = Mapper;
-			sourceTree = "<group>";
-		};
 		79DC471F263D9C3D0061A2CB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				79F5C38E263E94F2006E14D0 /* URL+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -231,6 +245,16 @@
 				79F5C32D263E6C0C006E14D0 /* Credits.swift */,
 			);
 			path = Credits;
+			sourceTree = "<group>";
+		};
+		79F5C33D263E7B47006E14D0 /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				79F5C30A263E59D0006E14D0 /* Mapper.swift */,
+				79F5C337263E7A72006E14D0 /* MovieListMapper.swift */,
+				79F5C328263E6B45006E14D0 /* CreditsMapper.swift */,
+			);
+			path = Mapper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -370,17 +394,25 @@
 			files = (
 				79F5C310263E5AD9006E14D0 /* Movie.swift in Sources */,
 				79F5C31F263E62C7006E14D0 /* Cast.swift in Sources */,
+				79F5C347263E7DA7006E14D0 /* Network.swift in Sources */,
 				79DC470A263D96620061A2CB /* AnyDecodable.swift in Sources */,
 				79F5C338263E7A72006E14D0 /* MovieListMapper.swift in Sources */,
+				79F5C38F263E94F2006E14D0 /* URL+Extension.swift in Sources */,
+				79F5C36B263E8F03006E14D0 /* AuthenticatedRequest.swift in Sources */,
 				79DC470E263D96940061A2CB /* AnyEncodable.swift in Sources */,
 				79F5C325263E62D0006E14D0 /* Crew.swift in Sources */,
+				79F5C34B263E7DB9006E14D0 /* AlamofireNetwork.swift in Sources */,
 				79DC4713263D987B0061A2CB /* Settings.swift in Sources */,
+				79F5C395263E9898006E14D0 /* Remote.swift in Sources */,
 				79DC4717263D9B450061A2CB /* APIVersion.swift in Sources */,
 				79F5C319263E6040006E14D0 /* Video.swift in Sources */,
+				79F5C341263E7BCB006E14D0 /* NetworkError.swift in Sources */,
 				79F5C30B263E59D0006E14D0 /* Mapper.swift in Sources */,
+				79F5C367263E8D6A006E14D0 /* Credentials.swift in Sources */,
 				79F5C329263E6B45006E14D0 /* CreditsMapper.swift in Sources */,
 				79F5C334263E78AD006E14D0 /* MovieList.swift in Sources */,
 				79F5C32E263E6C0C006E14D0 /* Credits.swift in Sources */,
+				79F5C363263E8808006E14D0 /* APIRequest.swift in Sources */,
 				79DC4706263D96140061A2CB /* AnyCodable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
