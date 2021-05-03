@@ -9,6 +9,7 @@
 import UIKit
 import UICircularProgressRing
 import AVKit
+import Steve
 
 class MovieDetailViewController: UIViewController {
     
@@ -61,36 +62,52 @@ class MovieDetailViewController: UIViewController {
         progressRing.startProgress(to: CGFloat((detailedMovie?.voteAverage ?? 0.0) * 10.0), duration: 1)
     }
     
+//    private func loadDetails() {
+//        guard let movieId = movieId else {
+//            return
+//        }
+//
+//        networking.loadDetails(movieId: movieId) { [weak self] (result) in
+//            guard let result = result, let self = self else {
+//                return
+//            }
+//            self.detailedMovie = result
+//            self.updateView()
+//        }
+//
+//        networking.loadVideos(movieId: movieId) { [weak self] (result) in
+//            guard let result = result, let self = self else {
+//                return
+//            }
+//            self.videos = result
+//            self.videosCollectionView.reloadData()
+//        }
+//
+//        networking.loadCast(movieId: movieId) { [weak self] (resultCast) in
+//            guard let self = self, let resultCast = resultCast else {
+//                return
+//            }
+//            self.cast = resultCast
+//            self.cast = Array(self.cast.prefix(20))
+//            self.castCollectionView.reloadData()
+//        }
+//
+//    }
+    
     private func loadDetails() {
         guard let movieId = movieId else {
             return
         }
-
-        networking.loadDetails(movieId: movieId) { [weak self] (result) in
-            guard let result = result, let self = self else {
+        _ = MovieDetailAction.loadMovieDetail(id: movieId) { [weak self] (movie, error) in
+            if let error = error {
+                print(error.localizedDescription)
                 return
             }
-            self.detailedMovie = result
-            self.updateView()
-        }
-        
-        networking.loadVideos(movieId: movieId) { [weak self] (result) in
-            guard let result = result, let self = self else {
+            guard let movie = movie, let self = self else {
                 return
             }
-            self.videos = result
-            self.videosCollectionView.reloadData()
+            self.updateView(movie: movie)
         }
-        
-        networking.loadCast(movieId: movieId) { [weak self] (resultCast) in
-            guard let self = self, let resultCast = resultCast else {
-                return
-            }
-            self.cast = resultCast
-            self.cast = Array(self.cast.prefix(20))
-            self.castCollectionView.reloadData()
-        }
-        
     }
     
     private func configureView() {
@@ -120,7 +137,7 @@ class MovieDetailViewController: UIViewController {
         
     }
     
-    private func updateView() {
+    private func updateView(movie: Steve.Movie) {
         
         activityIndicator.stopAnimating()
         activityIndicator.isHidden = true

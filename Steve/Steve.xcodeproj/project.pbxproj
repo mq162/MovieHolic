@@ -14,6 +14,9 @@
 		79E9028E263FACB100DCD76E /* Action+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9028D263FACB100DCD76E /* Action+Extension.swift */; };
 		79E90294263FADB100DCD76E /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E90293263FADB100DCD76E /* Store.swift */; };
 		79E9029A263FAF2F00DCD76E /* MovieDetailAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E90299263FAF2F00DCD76E /* MovieDetailAction.swift */; };
+		79E902A0263FC5F500DCD76E /* MovieDetailStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E9029F263FC5F500DCD76E /* MovieDetailStore.swift */; };
+		79E902A5263FCC2A00DCD76E /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E902A4263FCC2A00DCD76E /* Model.swift */; };
+		79E902AB263FD19E00DCD76E /* StoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79E902AA263FD19E00DCD76E /* StoreManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +40,9 @@
 		79E9028D263FACB100DCD76E /* Action+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Action+Extension.swift"; sourceTree = "<group>"; };
 		79E90293263FADB100DCD76E /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		79E90299263FAF2F00DCD76E /* MovieDetailAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailAction.swift; sourceTree = "<group>"; };
+		79E9029F263FC5F500DCD76E /* MovieDetailStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailStore.swift; sourceTree = "<group>"; };
+		79E902A4263FCC2A00DCD76E /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		79E902AA263FD19E00DCD76E /* StoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +89,7 @@
 				79E90287263FAC0500DCD76E /* Base */,
 				79E90297263FAEE600DCD76E /* Actions */,
 				79E90298263FAEF400DCD76E /* Stores */,
+				79E902A3263FCC1600DCD76E /* Model */,
 				79E9023A263FA71C00DCD76E /* Steve.h */,
 				79E9023B263FA71C00DCD76E /* Info.plist */,
 			);
@@ -103,6 +110,7 @@
 			children = (
 				79E90288263FAC1600DCD76E /* Dispatcher.swift */,
 				79E90293263FADB100DCD76E /* Store.swift */,
+				79E902AA263FD19E00DCD76E /* StoreManager.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -126,8 +134,17 @@
 		79E90298263FAEF400DCD76E /* Stores */ = {
 			isa = PBXGroup;
 			children = (
+				79E9029F263FC5F500DCD76E /* MovieDetailStore.swift */,
 			);
 			path = Stores;
+			sourceTree = "<group>";
+		};
+		79E902A3263FCC1600DCD76E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				79E902A4263FCC2A00DCD76E /* Model.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,8 +256,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79E902A0263FC5F500DCD76E /* MovieDetailStore.swift in Sources */,
+				79E902AB263FD19E00DCD76E /* StoreManager.swift in Sources */,
 				79E90294263FADB100DCD76E /* Store.swift in Sources */,
 				79E90289263FAC1600DCD76E /* Dispatcher.swift in Sources */,
+				79E902A5263FCC2A00DCD76E /* Model.swift in Sources */,
 				79E9028E263FACB100DCD76E /* Action+Extension.swift in Sources */,
 				79E9029A263FAF2F00DCD76E /* MovieDetailAction.swift in Sources */,
 			);

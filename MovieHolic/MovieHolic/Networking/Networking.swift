@@ -52,12 +52,14 @@ class Networking {
         session.dataTask(with: urlNotNil) { (data, response, error) in
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
+            print(urlNotNil)
             guard let data = data else {
                 return completion(nil)
             }
             do {
                 let result = try decoder.decode(MoviesListResponse.self, from: data)
                 DispatchQueue.main.async {
+                    
                     guard let totalPages = result.totalPages else {
                         return
                     }
@@ -71,7 +73,7 @@ class Networking {
                     completion(result.results)
                 }
             } catch {
-                completion(nil)
+                completion([Movie(backdropPath: nil, posterPath: nil, id: 460465, title: "fgdf", voteAverage: 3.9, overview: "sdgsgsgdgsdg", releaseDate: nil)])
             }
         }.resume()
     }
