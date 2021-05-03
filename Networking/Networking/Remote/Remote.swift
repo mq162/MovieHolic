@@ -32,21 +32,21 @@ public class Remote {
     ///     - completion: Closure to be executed upon completion. Will receive the JSON Parsed Response (if successful)
     ///
     func enqueue(_ request: URLRequestConvertible, completion: @escaping (Any?, Error?) -> Void) {
-        network.responseData(for: request) { [weak self] (data, networError) in
+        network.responseData(for: request) { [weak self] (data, networkError) in
             guard let self = self else {
                 return
             }
 
             guard let data = data else {
-                completion(nil, networError)
+                completion(nil, networkError)
                 return
             }
 
-            if let dotcomError = DotcomValidator.error(from: data) {
-                self.dotcomErrorWasReceived(error: dotcomError, for: request)
-                completion(nil, dotcomError)
-                return
-            }
+//            if let dotcomError = DotcomValidator.error(from: data) {
+//                self.dotcomErrorWasReceived(error: dotcomError, for: request)
+//                completion(nil, dotcomError)
+//                return
+//            }
 
             do {
                 let document = try JSONSerialization.jsonObject(with: data, options: [])
@@ -79,17 +79,17 @@ public class Remote {
                 return
             }
 
-            if let dotcomError = DotcomValidator.error(from: data) {
-                self.dotcomErrorWasReceived(error: dotcomError, for: request)
-                completion(nil, dotcomError)
-                return
-            }
+//            if let dotcomError = DotcomValidator.error(from: data) {
+//                self.dotcomErrorWasReceived(error: dotcomError, for: request)
+//                completion(nil, dotcomError)
+//                return
+//            }
 
             do {
                 let parsed = try mapper.map(response: data)
                 completion(parsed, nil)
             } catch {
-                DDLogError("<> Mapping Error: \(error)")
+                print("<> Mapping Error: \(error)")
                 completion(nil, error)
             }
         }
@@ -106,7 +106,7 @@ public class Remote {
     ///     - completion: Closure to be executed upon completion.
     ///
     func enqueue<M: Mapper>(_ request: URLRequestConvertible, mapper: M,
-                            completion: @escaping (Result<M.Output, Error>) -> Void) {
+                            completion: @escaping (Swift.Result<M.Output, Error>) -> Void) {
         network.responseData(for: request) { [weak self] result in
             guard let self = self else {
                 return
@@ -114,17 +114,17 @@ public class Remote {
 
             switch result {
             case .success(let data):
-                if let dotcomError = DotcomValidator.error(from: data) {
-                    self.dotcomErrorWasReceived(error: dotcomError, for: request)
-                    completion(.failure(dotcomError))
-                    return
-                }
+//                if let dotcomError = DotcomValidator.error(from: data) {
+//                    self.dotcomErrorWasReceived(error: dotcomError, for: request)
+//                    completion(.failure(dotcomError))
+//                    return
+//                }
 
                 do {
                     let parsed = try mapper.map(response: data)
                     completion(.success(parsed))
                 } catch {
-                    DDLogError("<> Mapping Error: \(error)")
+                    print("<> Mapping Error: \(error)")
                     completion(.failure(error))
                 }
             case .failure(let error):
