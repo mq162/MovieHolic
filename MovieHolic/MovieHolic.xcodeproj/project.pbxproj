@@ -39,6 +39,10 @@
 		18EE08592434C65E008007AA /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EE08582434C65E008007AA /* Extension.swift */; };
 		79DC46EC263D8ACC0061A2CB /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79DC46EB263D8ACC0061A2CB /* Networking.framework */; };
 		79DC46ED263D8ACC0061A2CB /* Networking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 79DC46EB263D8ACC0061A2CB /* Networking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		79E9027E263FA7BC00DCD76E /* Steve.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79E9027D263FA7BC00DCD76E /* Steve.framework */; };
+		79E9027F263FA7BC00DCD76E /* Steve.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 79E9027D263FA7BC00DCD76E /* Steve.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		79E90285263FA7C500DCD76E /* Storage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79E90284263FA7C500DCD76E /* Storage.framework */; };
+		79E90286263FA7C500DCD76E /* Storage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 79E90284263FA7C500DCD76E /* Storage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -48,7 +52,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				79E9027F263FA7BC00DCD76E /* Steve.framework in Embed Frameworks */,
 				79DC46ED263D8ACC0061A2CB /* Networking.framework in Embed Frameworks */,
+				79E90286263FA7C500DCD76E /* Storage.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -88,6 +94,8 @@
 		18EE08582434C65E008007AA /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		79924550263BDF1F00F4CC9C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = MovieHolic/Info.plist; sourceTree = SOURCE_ROOT; };
 		79DC46EB263D8ACC0061A2CB /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		79E9027D263FA7BC00DCD76E /* Steve.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Steve.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		79E90284263FA7C500DCD76E /* Storage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Storage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		93C4F1B76623C6B192362556 /* Pods-MovieHolic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieHolic.release.xcconfig"; path = "Target Support Files/Pods-MovieHolic/Pods-MovieHolic.release.xcconfig"; sourceTree = "<group>"; };
 		D54A62FEA45045C0C11094D7 /* Pods_MovieHolic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieHolic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2A72341172634E4D7A70E4F /* Pods-MovieHolic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieHolic.debug.xcconfig"; path = "Target Support Files/Pods-MovieHolic/Pods-MovieHolic.debug.xcconfig"; sourceTree = "<group>"; };
@@ -100,6 +108,8 @@
 			files = (
 				79DC46EC263D8ACC0061A2CB /* Networking.framework in Frameworks */,
 				021BFE852D6936A6DEDA0E91 /* Pods_MovieHolic.framework in Frameworks */,
+				79E90285263FA7C500DCD76E /* Storage.framework in Frameworks */,
+				79E9027E263FA7BC00DCD76E /* Steve.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,6 +238,8 @@
 		79DC46EA263D8ACC0061A2CB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				79E90284263FA7C500DCD76E /* Storage.framework */,
+				79E9027D263FA7BC00DCD76E /* Steve.framework */,
 				79DC46EB263D8ACC0061A2CB /* Networking.framework */,
 				D54A62FEA45045C0C11094D7 /* Pods_MovieHolic.framework */,
 			);

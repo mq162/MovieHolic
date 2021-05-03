@@ -133,3 +133,12 @@ public class Remote {
         }
     }
 }
+
+// MARK: - Constants!
+//
+public extension Remote {
+
+    enum Default {
+        public static let firstPageNumber: Int = 1
+    }
+}
